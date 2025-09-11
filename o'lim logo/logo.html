@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>어울림</title>
+  <style>
+    body {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    /* 공통 하트 반쪽 스타일 */
+    .heart-left, .heart-right {
+      position: absolute;
+      width: 100px;
+      height: 160px;
+      background: linear-gradient(to bottom right, #FF7B7B, #FF3B3B);
+      border-radius: 100px 100px 0 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .heart-left {
+      transform: rotate(-45deg);
+      left: 0;
+      top: 40px;
+      z-index: 1;
+    }
+
+    .heart-right {
+      transform: rotate(45deg);
+      right: 58px;
+      top: 40px;
+      z-index: 2;
+    }
+
+    /* 아래 삼각형 뾰족한 부분 */
+    .bottom-point {
+      position: absolute;
+      top: 138px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 30px solid #FF3B3B;
+      z-index: 0;
+    }
+
+    /* 쌀알 느낌의 동그라미 */
+    .circle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 30% 30%, #FFB3B3, #FF6B6B);
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .circle.left {
+      left: 0px;
+      top: 20px;
+    }
+
+    .circle.right {
+      right: 58px;
+      top: 20px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart-left"></div>
+    <div class="heart-right"></div>
+    <div class="bottom-point"></div>
+    <div class="circle left"></div>
+    <div class="circle right"></div>
+  </div>
+</body>
+</html>
