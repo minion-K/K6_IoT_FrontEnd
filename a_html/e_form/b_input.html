@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>b_input</title>
+  <style>
+    h2 {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>input태그의 타입 속성</h1>
+  <!-- 
+    input 요소: 기본 너비가 20자 (초과된 내용은 화면상 생략)
+
+    cf) 많은 내용 작성 시 textarea 사용 권장
+  -->
+  <h2>1. text & password 속성값</h2>
+  <!-- 
+    text: 일반 텍스트 (기본값/ 주로 아이디, 이름, 주소 등 한 줄짜리)
+    password: 입력 내용 확인 불가 (민감한 정보)
+  -->
+    <form>
+      <label> 아이디
+        <!-- value 속성: 초기값 지정(수정 가능) -->
+        <input type="text" size="10" maxlength="5" value="qwe123">
+      </label>
+      <label> 비밀번호
+        <input type="password">
+      </label>
+    </form>
+
+    <h2>2. Search & url & email & tel 속성</h2>
+    <!-- 
+      text 입력을 기본 동작 & 각 용도에 맞게 기능을 추가
+      >> 시각적으로는 text와 동일
+    -->
+    <input type="search">
+    <input type="url"> <br />
+    <input type="email">
+    <input type="tel">
+</body>
+</html>
