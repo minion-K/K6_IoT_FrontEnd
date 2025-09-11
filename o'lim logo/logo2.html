@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>logo</title>
+  <style>
+    body {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 320px;
+      height: 220px;
+    }
+
+    .droplet {
+      position: absolute;
+      width: 150px;
+      height: 200px;
+      background: linear-gradient(to bottom, #ff6b6b, #ff4b4b);
+      clip-path: path("M 75 2 C 135 0, 150 90, 75 185 C 0 90, 15 0, 75 2 Z");
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 왼쪽 물방울 */
+    .droplet.left {
+      left: 34px;
+      transform-origin: top right;
+      transform: rotate(-20deg);
+      z-index: 2;
+    }
+
+    /* 오른쪽 물방울 */
+    .droplet.right {
+      right: 0;
+      transform-origin: top left;
+      transform: rotate(20deg);
+      z-index: 1;
+    }
+
+    /* 사람 머리 역할 원 2개 */
+    .face {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff6b6b;
+      border-radius: 50%;
+      top: 0;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      z-index: 3;
+    }
+
+    .face.left {
+      left:65px;
+    }
+
+    .face.right {
+      right: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-container">
+    <div class="droplet left"></div>
+    <div class="droplet right"></div>
+    <div class="face left"></div>
+    <div class="face right"></div>
+  </div>
+</body>
+</html>
