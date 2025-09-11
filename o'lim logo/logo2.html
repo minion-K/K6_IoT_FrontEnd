@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>logo</title>
+  <title>어울림 로고</title>
   <style>
     body {
       background: #fff;
@@ -23,45 +23,47 @@
       position: absolute;
       width: 150px;
       height: 200px;
-      background: linear-gradient(to bottom, #ff6b6b, #ff4b4b);
       clip-path: path("M 75 2 C 135 0, 150 90, 75 185 C 0 90, 15 0, 75 2 Z");
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
-    /* 왼쪽 물방울 */
+    /* 왼쪽 인물 - 붉은 코랄 계열 */
     .droplet.left {
-      left: 34px;
+      left: 68px;
+      background: linear-gradient(to bottom, #FF6B6B, #FF8A8A);
       transform-origin: top right;
-      transform: rotate(-20deg);
-      z-index: 2;
-    }
-
-    /* 오른쪽 물방울 */
-    .droplet.right {
-      right: 0;
-      transform-origin: top left;
-      transform: rotate(20deg);
+      transform: rotate(-15deg);
       z-index: 1;
     }
 
-    /* 사람 머리 역할 원 2개 */
+    /* 오른쪽 인물 - 살짝 더 밝은 코랄 */
+    .droplet.right {
+      right: 0;
+      background: linear-gradient(to bottom, #FF7C7C, #FFA0A0);
+      transform-origin: top left;
+      transform: rotate(15deg);
+      z-index: 2;
+    }
+
+    /* 얼굴 원 */
     .face {
       position: absolute;
       width: 40px;
       height: 40px;
-      background: #ff6b6b;
       border-radius: 50%;
-      top: 0;
+      top: -20px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
       z-index: 3;
     }
 
     .face.left {
-      left:65px;
+      left: 121px;
+      background: linear-gradient(to bottom, #FF6B6B, #FF8A8A);
     }
 
     .face.right {
-      right: 30px;
+      right: 50px;
+      background: linear-gradient(to bottom, #FF7C7C, #FFA0A0);
     }
   </style>
 </head>
