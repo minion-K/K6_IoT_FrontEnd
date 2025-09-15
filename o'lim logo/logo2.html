@@ -104,28 +104,41 @@
 
     .heartbeat-path {
       fill: none;
-      stroke: rgba(255, 255, 255, 0.6);
+      stroke: white;
       stroke-width: 2;
       stroke-linejoin: round;
       stroke-linecap: round;
-    }
-
-    .glow-dot {
-      fill: white;
-      filter: drop-shadow(0 0 6px white);
-      r: 4;
-    }
-
-    @keyframes moveAlong {
-      to {
-        offset-distance: 100%;
-      }
+      opacity: 0.4; /* 살짝 희미하게 */
     }
 
     .moving-dot {
+      fill: white;
+      r: 2;
+      filter: drop-shadow(0 0 6px white);
       offset-path: path("M0,20 L10,20 L13,12 L16,28 L19,18 L22,25 L25,10 L28,22 L31,15 L34,27 L37,20 L50,20 L320,20");
-      offset-distance: 0%;
-      animation: moveAlong 2.5s linear infinite;
+      animation: moveAndPause 1.8s linear infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+      transform: scaleX(2.0);
+      opacity: 1;
+    }
+
+    @keyframes moveAndPause {
+      0% {
+        offset-distance: 0%;
+        opacity: 1;
+      }
+      44.4% { /* 0.8초 */
+        offset-distance: 100%;
+        opacity: 1;
+      }
+      45% {
+        opacity: 0;
+      }
+      100% {
+        offset-distance: 100%;
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -144,7 +157,7 @@
           L31,15 L34,27 L37,20
           L50,20
           L320,20" />
-        <circle class="glow-dot moving-dot" />
+        <circle class="moving-dot" />
       </svg>
     </div>
 

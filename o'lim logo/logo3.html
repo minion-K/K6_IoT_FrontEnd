@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>심전도 애니메이션</title>
+  <title>어울림 로고 + 심전도 애니메이션</title>
   <style>
     body {
       background: #2E2E2E;
@@ -13,10 +13,88 @@
       margin: 0;
     }
 
-    .heartbeat-container {
+    .heart-container {
       position: relative;
       width: 320px;
-      height: 60px;
+      height: 220px;
+      filter: drop-shadow(0 0 20px rgba(255, 100, 100, 0.3));
+    }
+
+    .heart-glow {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(255, 120, 120, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .heart-shape {
+      transform: rotate(-20deg);
+      transform-origin: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .droplet {
+      position: absolute;
+      width: 150px;
+      height: 200px;
+      clip-path: path("M 75 2 C 135 0, 150 90, 75 185 C 0 90, 15 0, 75 2 Z");
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .droplet.left {
+      left: 68px;
+      background: linear-gradient(to bottom, #FF6B6B, #FF8A8A);
+      transform-origin: top right;
+      transform: rotate(-15deg);
+      z-index: 1;
+    }
+
+    .droplet.right {
+      right: 0;
+      background: linear-gradient(to bottom, #FF7C7C, #FFA0A0);
+      transform-origin: top left;
+      transform: rotate(15deg);
+      z-index: 2;
+    }
+
+    .face {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      top: -20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      z-index: 3;
+    }
+
+    .face.left {
+      left: 121px;
+      background: linear-gradient(to bottom, #FF6B6B, #FF8A8A);
+    }
+
+    .face.right {
+      right: 50px;
+      background: linear-gradient(to bottom, #FF7C7C, #FFA0A0);
+    }
+
+    /* 심전도 선 */
+    .heartbeat-line {
+      position: absolute;
+      top: 110px; /* 하트 중앙 맞춤 */
+      left: 0;
+      width: 100%;
+      height: 60px; /* 높이 맞춤 */
+      z-index: 2;
+      pointer-events: none;
     }
 
     svg {
@@ -30,46 +108,57 @@
       stroke-width: 2;
       stroke-linejoin: round;
       stroke-linecap: round;
-      opacity: 0.3;
+      opacity: 0.4; /* 희미하게 */
     }
 
     .moving-dot {
       fill: white;
-      r: 3;
-      offset-path: path("M110,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30");
-      offset-distance: 0%;
-      animation:
-        moveAlong 1s linear infinite,
-        fadeOut 1s linear infinite;
-      transform: scaleX(2.5);
+      r: 2;
       filter: drop-shadow(0 0 6px white);
+      offset-path: path("M90,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30");
+      animation: moveAndPause 1.8s linear infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+      transform: scaleX(2.0);
     }
 
-    @keyframes moveAlong {
+    @keyframes moveAndPause {
       0% {
         offset-distance: 0%;
+        opacity: 1;
+      }
+      44.4% { /* 0.8초 */
+        offset-distance: 100%;
+        opacity: 1;
+      }
+      45% {
+        opacity: 0;
       }
       100% {
         offset-distance: 100%;
-      }
-    }
-
-    @keyframes fadeOut {
-      0%, 85% {
-        opacity: 1;
-      }
-      100% {
         opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="heartbeat-container">
-    <svg viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg">
-      <path class="heartbeat-path" d="M110,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30" />
-      <circle class="moving-dot" />
-    </svg>
+  <div class="heart-container">
+    <div class="heart-glow"></div>
+
+    <!-- 심전도 선 -->
+    <div class="heartbeat-line">
+      <svg viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg">
+        <path class="heartbeat-path" d="M90,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30" />
+        <circle class="moving-dot" />
+      </svg>
+    </div>
+
+    <div class="heart-shape">
+      <div class="droplet left"></div>
+      <div class="droplet right"></div>
+      <div class="face left"></div>
+      <div class="face right"></div>
+    </div>
   </div>
 </body>
 </html>
