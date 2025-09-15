@@ -2,8 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>어울림 로고 + 심전도 애니메이션</title>
+  <title>어울림 로고 + 심전도 애니메이션 (중앙 조정, 선명화)</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+
     body {
       background: #2E2E2E;
       display: flex;
@@ -11,6 +13,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      flex-direction: column; /* 세로로 정렬 */
     }
 
     .heart-container {
@@ -18,6 +21,7 @@
       width: 320px;
       height: 220px;
       filter: drop-shadow(0 0 20px rgba(255, 100, 100, 0.3));
+      margin-bottom: 20px; /* 텍스트와 간격 */
     }
 
     .heart-glow {
@@ -89,10 +93,10 @@
     /* 심전도 선 */
     .heartbeat-line {
       position: absolute;
-      top: 110px; /* 하트 중앙 맞춤 */
-      left: 0;
+      top: 60px; /* 하트 가운데로 조정 */
+      left: -20px;
       width: 100%;
-      height: 60px; /* 높이 맞춤 */
+      height: 60px;
       z-index: 2;
       pointer-events: none;
     }
@@ -105,16 +109,16 @@
     .heartbeat-path {
       fill: none;
       stroke: white;
-      stroke-width: 2;
+      stroke-width: 2.5; /* 선 굵기 증가 */
       stroke-linejoin: round;
       stroke-linecap: round;
-      opacity: 0.4; /* 희미하게 */
+      opacity: 0.5; /* 더 선명하게 */
     }
 
     .moving-dot {
       fill: white;
-      r: 2;
-      filter: drop-shadow(0 0 6px white);
+      r: 2; /* 점 크기 증가 */
+      filter: drop-shadow(0 0 6px white) drop-shadow(0 0 12px white) drop-shadow(0 0 18px white);
       offset-path: path("M90,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30");
       animation: moveAndPause 1.8s linear infinite;
       transform-origin: center;
@@ -127,7 +131,7 @@
         offset-distance: 0%;
         opacity: 1;
       }
-      44.4% { /* 0.8초 */
+      44.4% {
         offset-distance: 100%;
         opacity: 1;
       }
@@ -138,6 +142,33 @@
         offset-distance: 100%;
         opacity: 0;
       }
+    }
+
+    /* 텍스트 스타일 */
+    .logo-text {
+      position: relative;
+      left: 35px;
+      bottom: 40px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: white;
+      text-align: center;
+      user-select: none;
+    }
+
+    .logo-text .olim {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+      text-shadow: 0 0 8px rgba(255, 100, 100, 0.7);
+    }
+
+    .logo-text .korean {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #FF6B6B;
+      text-shadow: 0 0 8px rgba(255, 107, 107, 0.7);
     }
   </style>
 </head>
@@ -159,6 +190,12 @@
       <div class="face left"></div>
       <div class="face right"></div>
     </div>
+  </div>
+
+  <!-- 텍스트 추가 -->
+  <div class="logo-text">
+    <div class="olim">O'Lim</div>
+    <div class="korean">어울림</div>
   </div>
 </body>
 </html>
