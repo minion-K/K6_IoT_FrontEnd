@@ -4,6 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>text01</title>
+  <style>
+    /*
+      CSS 명령어를 사용하여 웹 브라우저가 해당 서체를 다운로드 할 것을 명시
+      : 글꼴 자체를 원격 서버에서 호출 가능
+    */
+  @font-face {
+    font-family: 'Cafe24Surround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'OnglippDaelong';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2507-2@1.0/Ownglyph_daelong-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'OneStoreMobilePop';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+  }
+  </style>
 </head>
 <body>
   <!-- 
@@ -11,7 +35,7 @@
 
     1. 글꼴 자체의 스타일(텍스트 자체에 적용)
     : font-
-    font-familiy(글꼴)
+    font-family(글꼴)
     font-size(글자 크기)
       > 키워드(small / medium / large - x, xx단위까지 사용 가능 EX: xx-small)
       > 단위 (em, rem, px 등)
@@ -23,6 +47,16 @@
 
     2. 텍스트 레이아웃 스타일(자간, 문자 정렬 등의 조작)
   -->
+  <h2>글꼴 스타일(font-family)</h2>
+  <!-- 
+  글꼴의 경우 깨짐 방지를 위해 여러 개의 글꼴을 ,를 기준으로 나열
+
+  +) 글꼴명 자체에 띄어쓰기가 있는 경우 ''작은 따옴표로 표기
+  -->
+  <p style="font-family: Cafe24Surround;">글꼴 적용 예시1</p>
+  <p style="font-family: OnglippDaelong;">글꼴 적용 예시1</p>
+  <p style="font-family: OneStoreMobilePop;">글꼴 적용 예시1</p>
+
   <p style="font-size: 10px; font-style: italic; font-weight: normal;">
     font-size 속성(단위) / font-style 속성(italic) / font-weight 속성(예약어)
   </p>
@@ -31,7 +65,7 @@
   <p style="font-size: 16px; font-style: oblique; font-weight: bold;">
     font-size 속성(단위) / font-style 속성(italic) / font-weight 속성(예약어)
   </p>
-  
+
   <p style="font-size: 24px; font-style: normal; font-weight: lighter;">
     font-size 속성(단위) / font-style 속성(italic) / font-weight 속성(예약어)
   </p>
