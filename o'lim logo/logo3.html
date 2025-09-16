@@ -13,7 +13,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      flex-direction: column; /* 세로로 정렬 */
+      flex-direction: column; 
     }
 
     .heart-container {
@@ -21,7 +21,7 @@
       width: 320px;
       height: 220px;
       filter: drop-shadow(0 0 20px rgba(255, 100, 100, 0.3));
-      margin-bottom: 20px; /* 텍스트와 간격 */
+      margin-bottom: 20px; 
     }
 
     .heart-glow {
@@ -90,10 +90,9 @@
       background: linear-gradient(to bottom, #FF7C7C, #FFA0A0);
     }
 
-    /* 심전도 선 */
     .heartbeat-line {
       position: absolute;
-      top: 60px; /* 하트 가운데로 조정 */
+      top: 60px;
       left: -20px;
       width: 100%;
       height: 60px;
@@ -109,15 +108,15 @@
     .heartbeat-path {
       fill: none;
       stroke: white;
-      stroke-width: 2.5; /* 선 굵기 증가 */
+      stroke-width: 2.5; 
       stroke-linejoin: round;
       stroke-linecap: round;
-      opacity: 0.5; /* 더 선명하게 */
+      opacity: 0.5; 
     }
 
     .moving-dot {
       fill: white;
-      r: 2; /* 점 크기 증가 */
+      r: 1.8; 
       filter: drop-shadow(0 0 6px white) drop-shadow(0 0 12px white) drop-shadow(0 0 18px white);
       offset-path: path("M90,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30");
       animation: moveAndPause 1.8s linear infinite;
@@ -144,7 +143,6 @@
       }
     }
 
-    /* 텍스트 스타일 */
     .logo-text {
       position: relative;
       left: 35px;
@@ -176,7 +174,6 @@
   <div class="heart-container">
     <div class="heart-glow"></div>
 
-    <!-- 심전도 선 -->
     <div class="heartbeat-line">
       <svg viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg">
         <path class="heartbeat-path" d="M90,30 L180,30 L185,5 L190,55 L195,25 L200,35 L205,10 L210,30 L320,30" />
@@ -192,7 +189,6 @@
     </div>
   </div>
 
-  <!-- 텍스트 추가 -->
   <div class="logo-text">
     <div class="olim">O'Lim</div>
     <div class="korean">어울림</div>
