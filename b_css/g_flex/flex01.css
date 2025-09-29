@@ -32,3 +32,20 @@
     flex-direction: column-reverse; 
   */
 }
+
+.example3 {
+  flex-wrap: nowrap;
+
+  /* 시작점을 기준으로 아래로 감싸는 형태 */
+  flex-wrap: wrap;
+
+  /* 마지막 요소를 시작으로 설정하여 나머지를 감싸는 형태 */
+  flex-wrap: wrap-reverse;
+}
+
+.example4 {
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+
+  flex-flow: row-reverse wrap;
+}
