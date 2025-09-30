@@ -89,6 +89,127 @@ code {
   min-height: 64px;
 }
 
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list a {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-list a:hover, .nav-list a:focus{
+  color: var(--text);
+}
+
+/* BUTTON */
+.btn {
+  /* 
+    inline-flex VS flex
+    : 둘 다 자식 요소를 flexbox 규칙으로 배치 가능
+    - 자식 배치는 동일하게 적용
+
+    1) flex
+      : 컨테이너 자체가 블록레벨 요소 (가로 100% 차지)
+
+    2) inline-flex
+      : 컨테이너 자체가 인라인 요소처럼 동작 (내용 크기만큼만 차지)
+  */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--outline);
+  background-color: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: 
+    transform .1s ease,
+    background .2s ease,
+    border-color .2s ease
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background-color: rgba(255,255,255,0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn small {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn.outline {
+  background: transparent;
+}
+
+/* MAIN */
+/* 1. SECTION (HERO) */
+.hero {
+  /* box 모델 속성값이 3개인 경우: 위 좌우 하 */
+  padding: 48px 0 16px;
+}
+
+.hero-inner {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-right {
+  flex: 1 1 320px;
+  min-height: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.mock-data {
+  width: 100%;
+  height: 220px;
+  border-radius: (var--radius);
+  background: linear-gradient(135deg, rgba(79,79,229,0.25), rgba(24, 197, 94, 0.25));
+  box-shadow: var(--shadow);
+}
+
 /* FOOTER */
 .site-footer {
   border-top: 1px solid rgba(255,255,255,0.08);
