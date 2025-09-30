@@ -1,0 +1,98 @@
+/* 
+  ===== Global Styles =====
+  - 폰트, 색상, 레이아웃 기본값 설계
+  - Flex 기반 반응형 레이아웃
+*/
+:root {
+  /* == 배경색 지정 == */
+  --bg: #0f172a;
+  --bg-muted: #111827;
+  --card: #111827;
+
+  /* == 글자색 지정 == */
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+
+  /* == Primaty & Accent Colors == */
+  /* == 주요 & 강조 색상 지정 ==  */
+  --primary: #4f46e5;
+  --primary-contrast: #ffffff;
+  --accent: #22c55e;
+
+  /* == 상태 색상 지정 == */
+  --danger: #dc2629;
+  
+  /* 테두리 & 그림자 색상 */
+  --outline: #374151;
+  --shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  /* 레이아웃 */
+  --radius: 16px;
+  --container: 1120px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: linear-gradient(180deg, #0b1023 0%, #0f172a 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  /*
+   cf) img: inline-block이 기본값 
+    - 요소가 가로 배치 되면서 너비, 높이값 지정 가능
+  */
+  display: block;
+}
+
+code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1rem 0.4rem;
+}
+
+.container {
+  max-width: var(--container);
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(17,24,39,0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex 아이템들의 사이 간격(행/열 간격) 지정 */
+  gap: 16px;
+  min-height: 64px;
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 0;
+  margin-top: 32px;
+  background: rgba(0,0,0,0.2);
+}
