@@ -38,3 +38,14 @@ console.log(discount);
 age = 19;
 let identity = age > 20 ? '성인' : (age <= 13 ? '어린이' : '청소년');
 console.log(identity);
+
+// ? 덧셈 연산자
+// - 타입이 모두 숫자인 경우에만: 산술 연산의 덧셈
+// - 타입이 하나라도 문자열인 경우: 문자열의 결합
+console.log('안녕' + 2 + 3 + '하세요'); // 안녕23하세요
+
+// ? typeof 연산자
+// : 데이터 타입이 문자열로 반환
+// > String, number, boolean, undefined, object, function 등
+
+// +) (초기 JS 설계 결함으로) null 데이터 타입은 object 반환
