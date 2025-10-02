@@ -32,8 +32,8 @@ let isMember = false;
 let discount = isMember ? '10%' : '5%';
 console.log(discount);
 
-// +) 삼항 연산자 중첩
-//  : 조건식 내에서 또 다른 조건의 계산이 가능
+// +) 삼항 연산자 중첩 
+//  : 조건식 내에서 또다른 조건의 계산이 가능
 
 age = 19;
 let identity = age > 20 ? '성인' : (age <= 13 ? '어린이' : '청소년');
