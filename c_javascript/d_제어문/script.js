@@ -31,5 +31,4 @@ while(true) {
   } else {
     console.log('2 ~ 9 사이의 숫자를 입력해주세요');
   }
-
 }
