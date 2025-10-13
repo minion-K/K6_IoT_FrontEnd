@@ -44,4 +44,37 @@ let copy = example;
 
 // ! 2) 깊은 복사: 내용(값) 자체를 완전히 새로 복사
 //    >> 값이 독립적
-// ? 원본과 복사본의 독립성을 보장 + 복사: 스프레드 연산자(...) 사용
+
+// ? 원본과 복사본의 독립성을 보장 + 복사
+// : 스프레드 연산자(...) 사용
+// - 배열 또는 객체의 요소를 개별 요소로 확장
+// - 여러 요소를 하나의 형태로 결합 시 사용
+
+// 1) 개별 요소 확장
+let english = ['a', 'b', 'c', 'd'];
+
+// 스프레드 연산자 사용법: ...변수명
+// >> 배열 내부의 '요소만' 복사
+let copyEnglish = [...english];
+let copyEnglish2 = ['z', ...english, 'zz'];
+console.log(copyEnglish); // [ 'a', 'b', 'c', 'd' ]
+console.log(copyEnglish2); // [ 'z', 'a', 'b', 'c', 'd', 'zz' ]
+
+english[0] = 'aaaaa';
+console.log(copyEnglish); // [ 'a', 'b', 'c', 'd' ]
+// >> 원본과 복사본이 독립적
+
+// 2) 하나의 형태로 결합
+let seperate1 = [1, 2, 3];
+let seperate2 = [4, 5, 6];
+
+let merge1 = [...seperate1, ...seperate2];
+let merge2 = [...seperate2, ...seperate1];
+console.log(merge1); // [ 1, 2, 3, 4, 5, 6 ]
+console.log(merge2); // [ 4, 5, 6, 1, 2, 3 ]
+
+// ! 얕은 복사
+// : 주소만 전달, 두 배열이 같이 데이터를 공유
+
+// ! 깊은 복사
+// : 데이터를 새로 복사, 서로 완전히 독립적인 배열
