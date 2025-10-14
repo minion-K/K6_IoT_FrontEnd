@@ -51,3 +51,16 @@ let human2 = new UpperCamelCaseName('김철수', 18, '고등학생');
 
 human1.greet();
 human2.greet();
+
+// ! 화살표 함수
+// : new 키워드를 사용하여 함수 호출
+// : UpperCamelCase 사용 권장
+function Person(firstName, lastName) {
+  this.name = {
+    first: firstName,
+    last: lastName
+  }
+}
+
+let person = new Person('길동', '홍');
+console.log(person.name); // { first: '길동', last: '홍' }
