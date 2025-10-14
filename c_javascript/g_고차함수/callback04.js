@@ -37,3 +37,33 @@ function manyParam(name, age, job) {
 }
 
 setTimeout(manyParam, 100, '홍길동', 31, 'developer'); // 홍길동 is 31 years old and is developer
+
+setTimeout(() => console.log('3초 뒤 실행'), 3000) // 3초 뒤 실행
+// cf) 화살표 함수에서 소괄호 생략은 매개변수가 1개일 때만 가능
+//    >> 매개변수가 없는 경우에는 반드시 소괄호 작성
+
+// ! 타이머 취소 함수: clearTimeout(타이머 ID);
+// : 등록된 타이머를 취소할 때 사용
+// - setTimeout으로 예약된 코드 실행을 중단하거나 무효화할 때 사용
+
+// cf) 타이머 ID는 타이머 함수 호출 시 반환
+const timeId = setTimeout(() => console.log('타이머 ID 확인용'), 5000);
+console.log(timeId);
+
+clearTimeout(timeId);
+
+// ! setInterval(콜백 함수, 시간)
+// : '지정된 시간 간격 마다' 함수를 반복해서 실행
+// >> 사용법은 setTimeout과 유사
+
+let count = 1;
+
+let id = setInterval(() => {
+  console.log(`3초마다 실행됩니다. ${count}번째`);
+  count++;
+}, 3000) // 3초 마다 실행
+
+setTimeout(() => {
+  console.log('타이머를 종료합니다.')
+  clearInterval(id);
+}, 15000)
