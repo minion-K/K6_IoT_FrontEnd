@@ -90,5 +90,37 @@ for(let item in person) {
 }
 
 let upperFruits = fruits.map(fruit => fruit.toUpperCase());
+console.log(`${upperFruits}`);
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+
+function combineArrays(arr1, arr2) {
+  let result = arr1.map((element, index) => {
+    return element + arr2[index];
+  });
+
+  return result;
+}
+
+console.log(combineArrays(arr1, arr2));
+
+function deepCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+let personCopy = deepCopy(person);
 
 
+const users = [
+  { name: "John", age: 25 },
+  { name: "Jane", age: 17 },
+  { name: "Doe", age: 18 }
+];
+
+function adultUserNames(users) {
+  return users.filter(user => user.age >= 18)
+              .map(user => user.name);
+}
+
+console.log(adultUserNames(users));
