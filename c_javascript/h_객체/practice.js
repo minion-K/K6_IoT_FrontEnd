@@ -86,8 +86,9 @@ console.log(add(3, 5));
 */
 console.log('=== 문제 2 ===');
 for(let item in person) {
-  console.log(item);
+  console.log(`${item}: ${person[item]}`);
 }
 
-let upperFruits = fruits.map(fruit => fruit.toUpperCase)
+let upperFruits = fruits.map(fruit => fruit.toUpperCase());
+
 
