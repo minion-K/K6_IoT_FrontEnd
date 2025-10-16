@@ -99,10 +99,37 @@ class GradeManagement {
 
   // 조건(평균 >= threshold)에 맞는 필터링 후 평균 내림차순 정렬
   getTopStudents(threshold) {
-
+    return this.getAverageScore()
+      .filter(info => info.average >= threshold)
+      //.sort(); // 오름차순 정렬 - sort((a, b) => a.average - b.average)
+      .sort((a, b) => b.average - a.average); // 내림차순 정렬
   }
   // 편의 출력 함수
   dispalyAll() {
-
+    console.log('=== 학생 목록 (평균 포함) ===')
+    this.getAverageScore().forEach(info => {
+      console.log(`[${info.id}] ${info.name} - 평균: ${info.average}`);
+    });
   }
 }
+
+// ! 프로그램 실행
+const gradeSystem = new GradeManagement();
+
+// 학생 추가 예제
+gradeSystem.addStudent("홍길동",{ Math: 90, Engilsh: 85, Science: 78});
+gradeSystem.addStudent("김철수",{ Math: 80, Engilsh: 95, Science: 88});
+gradeSystem.addStudent("이영희",{ Math: 85, Engilsh: 100, Science: 65});
+gradeSystem.addStudent("김유리",{ Math: 70, Engilsh: 80, Science: 87});
+
+gradeSystem.dispalyAll();
+
+// 전체 평균 정보 배열 조회
+const average = gradeSystem.getAverageScore();
+console.log('=== 전체 평균 정보 ===')
+console.log(average);
+
+// 상위 학생(예: 평균 84점 이상)
+const top = gradeSystem.getTopStudents(84);
+console.log('=== 평균 84점 이상 상위 학생 (내림차순) ===')
+console.log(top);
