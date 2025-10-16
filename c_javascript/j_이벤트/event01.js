@@ -77,3 +77,42 @@ window.onkeydown = function() {
 // : HTML 태그에 직접 onclick, onkeydown 등의 이벤트 속성을 사용하여 함수지정
 // - 사용하지 않는 것을 권장 (유지보수/코드 파싱 어려움)
 // >> 리액트에서 사용하는 방식
+
+const textButton = document.querySelector('#textChange');
+
+function textChangeColor() {
+  const randomColor = randomColorFunc();
+  textButton.style.color = randomColor;
+}
+
+// ! 3) addEventListner 메서드
+// : 표준 이벤트 모델
+// : HTML 요소에 addEventListener 메서드를 사용하여 이벤트 등록
+// - 한 요소에 여러 개의 이벤트 핸들러 등록 가능
+
+const buttons = document.querySelectorAll('.buttonsChange');
+
+// buttons: 동일한 선택자의 요소들이 배열로 반환
+buttons.forEach(btn => {
+  // HTML요소.addEventListener('이벤트', 콜백함수)
+  // HTML요소에 해당 이벤트가 발생하면 콜백함수를 실행
+  btn.addEventListener('click', function() {
+    const randomColor = randomColorFunc();
+    btn.style.backgroundColor = randomColor;
+  });
+})
+
+// ! +) 이벤트 제거하는 방법
+// : removeEventListener() 메서드 사용
+const removeButton = document.querySelector('#remove');
+
+let removeChange = () => {
+  const randomColor = randomColorFunc();
+  removeButton.style.backgroundColor = randomColor;
+}
+
+// 이벤트 리스너 등록
+removeButton.addEventListener('click', removeChange)
+
+// 이벤트 리스너 제거
+removeButton.removeEventListener('click', removeChange);
