@@ -1,0 +1,24 @@
+{
+  "name": "k6_iot_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minion-K/K6_IoT_FrontEnd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/minion-K/K6_IoT_FrontEnd/issues"
+  },
+  "homepage": "https://github.com/minion-K/K6_IoT_FrontEnd#readme"
+}
