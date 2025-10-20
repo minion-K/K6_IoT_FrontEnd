@@ -9,3 +9,43 @@ console.log(`소수점 자리 내림: ${Math.floor(Math.random() * 10)}`);
 
 console.log(`제곱근(square root): ${Math.sqrt(16)}`) // 4
 console.log(`제곱근(square root): ${Math.sqrt(225)}`) // 15
+
+// 5. Date 객체: 날짜, 시간 데이터 객체
+let now = new Date();
+console.log(now); // 2025-10-20T03:13:28.452Z (한국UTC 9시간 빠름: UTC+9)
+
+// ! 날짜
+// getDate(): 현재 '일'
+// getDay(): 현재 '요일' (일요일 0 ~ 토요일 6)
+// getFullYear(): 현재 '년도(YYYY: 2025);
+// getMonth(): 현재 '월' (1월 0 ~ 12월 11 - 현재 월은 반환값 + 1)
+console.log(now.getDate()); // 20(일)
+console.log(now.getDay()); // 1(월요일)
+console.log(now.getFullYear()); // 2025(년)
+console.log(now.getMonth() + 1); // 10(월)
+
+// ! 시간
+// getHours(): 0 ~ 23시
+// getMinutes(): 0 ~ 59분
+// getSeconds(): 0 ~ 59초
+console.log(now.getHours()); // 12시
+console.log(now.getMinutes()); // 19분
+console.log(now.getSeconds()); // 22초
+
+// ! 현지 날짜 표기법 & 시간 표기법: Locale(현재의)
+console.log(now.toLocaleDateString()); // 2025. 10. 20. YYYY-MM-DD
+console.log(now.toLocaleTimeString()); // 오후 12:20:40 오전/오후 HH:mm:SS
+
+// cf) 월-일-년도 (MM-DD-YYYY): 미국, 캐나다 등 
+
+// ! == 요일 데이터 문자열 변환 ==
+const current = new Date();
+console.log(current); // 2025-10-20T03:23:26.335Z
+
+// 요일 배열 정의
+const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+// getDay()로 인덱스를 받아, 배열에서 요일 문자열 추출
+const dayString = days[now.getDay()];
+
+console.log(dayString); // MON
