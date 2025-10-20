@@ -32,4 +32,4 @@ console.log(publisher, price, name, author); // 코리아 IT 18000 JS 공부하�
 
 // cf) 속성명을 변수로 지정하지 않고 새로운 식별자 사용
 const { aaa=name, bbb=price } = bookObject;
-console.log(aaa, bbb); // JS 공부하기 18000
+console.log(aaa, bbb); // JS 공부하기 18000 
