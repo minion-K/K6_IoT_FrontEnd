@@ -1,0 +1,51 @@
+:root{
+  --ink:#212529;
+  --sub:#495057;
+  --line:#e9ecef;
+  --ok:#2b8a3e;
+  --bad:#c92a2a;
+  --bg:#fff
+}
+*{
+  box-sizing:border-box;
+  color: black;
+  text-decoration: none;
+  border: none;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+}
+.input_box {
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.input_box:focus {
+  outline: none;
+  background: rgb(215, 228, 233) !important;
+}
+.input_box:invalid {
+  border:2px solid var(--bad);
+  background-color: #fff5f5;
+}
+.input_box:valid {
+  border:2px solid var(--ok);
+  background-color: #e6fcf5;
+}
+
+.btn {
+  width: 120px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--ink);
+  color: var(--line)
+}

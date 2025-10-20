@@ -1,0 +1,112 @@
+:root{
+  --ink:#212529;
+  --sub:#495057;
+  --line:#e9ecef;
+  --ok:#2b8a3e;
+  --bad:#c92a2a;
+  --bg:#fff
+}
+*{
+  box-sizing:border-box;
+  color: black;
+  text-decoration: none;
+  border: none;
+}
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.5 system-ui,sans-serif
+}
+
+.container{
+  width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--sub);
+}
+
+.kbd {
+  border: 1px solid var(--line);
+  padding: 4px;
+  padding-top: 3px;
+  border-radius: 5px;
+}
+
+.card {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+.row div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.row div input {
+  border: 1px solid black;
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+}
+#memberId, #bookId:invalid {
+  border: 1px solid red;
+}
+.helper {
+  color: var(--sub);
+}
+
+.btn {
+  background-color: var(--ink);
+  color: var(--bg);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.notice {
+  padding: 10px;
+  background: #e6fcf5;
+  color: #0b7285;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+.bad {
+  background: #fff5f5;
+  color: #c92a2a;
+}
+#empty .notice {
+  background-color: var(--bg);
+  color: var(--sub);
+  border: 1px solid var(--line)
+}
+#tab{
+  border: 2px solid lightblue;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  
+}

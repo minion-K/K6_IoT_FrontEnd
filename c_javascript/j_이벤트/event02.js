@@ -129,4 +129,3 @@ child.addEventListener('click', (e) => {
   // : 자식요소이벤트객체.stopPropagation()을 사용하여 이벤트 전파 중지
   e.stopPropagation();
 });
-
