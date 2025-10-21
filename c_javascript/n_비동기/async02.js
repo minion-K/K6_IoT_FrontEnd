@@ -54,11 +54,13 @@ function a() {
   
   function b() {
     console.log('b');
-  }
     function c() {
       console.log('c');
+      /// ...
     }
+  }
 }
+
 a();
 
 // >> 콜백 지옥(callback hell)
