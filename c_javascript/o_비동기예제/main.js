@@ -24,7 +24,7 @@ async function loadNotices() {
     deletebtn.addEventListener('click', () => deleteNotice(notice.id));
 
     div.appendChild(deletebtn);
-    noticeList.append(div);
+    noticeList.appendChild(div);
   })
 }
 
