@@ -15,7 +15,7 @@ async function loadNotices() {
       <strong>${notice.title}</strong> <em>(${notice.author})</em>
       <br />
       <p>${notice.content}</p>
-      <small>등록일: ${new Date(notice.createdAt + "Z").toLocaleString()}</small>
+      <small>등록일: ${new Date(notice.createdAt).toLocaleString()}</small>
     `;
     // ? .toLocaleString()
     // : 브라우저(클라이언트)의 로컨 시간대를 사용
