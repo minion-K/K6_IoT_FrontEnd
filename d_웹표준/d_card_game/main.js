@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //: 각 카드 클릭 시 호출
   function flipCard() {
     if(!isGameStarted || lockBoard) return;
+    
+    if(this === firstCard) return;
 
     // ? this 키워드
     // : 함수 선언문에서 this는 해당 함수가 실행된 객체 그 자체
