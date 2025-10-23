@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     showError('데이터를 불러오는 중 오류가 발생하였습니다.');
   }
 
-  // % 게시글은 화면에 표시하는 함수 정의
+  // % 게시글을 화면에 표시하는 함수 정의
   function displayPosts(posts) {
     postsContainer.innerHTML = '';
 
@@ -63,28 +63,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // % 검색 입력 필드에 입력이 있을 때마다 실행되는 이벤트 리스너 추가
-  searchInput.addEventListener("input", () => {
-    const searchTerm = searchInput.value.trim().toLowerCase();
+  // searchInput.addEventListener("input", () => {
+  //   const searchTerm = searchInput.value.trim().toLowerCase();
 
-    // ! 검색어가 없는 경우
-    if(!searchTerm) {
-      displayPosts(allPosts);
-      clearError(); // 검색어의 내용이 없으면 Error 제거
+  //   // ! 검색어가 없는 경우
+  //   if(!searchTerm) {
+  //     displayPosts(allPosts);
+  //     clearError(); // 검색어의 내용이 없으면 Error 제거
 
-      return;
-    }
+  //     return;
+  //   }
 
-    // ! 검색어가 있는 경우
-    const filteredPosts = filterPosts(allPosts, searchTerm);
+  //   // ! 검색어가 있는 경우
+  //   const filteredPosts = filterPosts(allPosts, searchTerm);
 
-    if(filteredPosts.length === 0) {
-      // 검색어는 있지만 검색어와 일치하는 게시글이 없는 경우
-      showError('일치하는 post가 없습니다.');
-    } else {
-      displayPosts(filteredPosts);
-      clearError();
-    }
-  });
+  //   if(filteredPosts.length === 0) {
+  //     // 검색어는 있지만 검색어와 일치하는 게시글이 없는 경우
+  //     showError('일치하는 post가 없습니다.');
+  //   } else {
+  //     displayPosts(filteredPosts);
+  //     clearError();
+  //   }
+  // });
 
   // % 게시글을 필터링하는 함수
   function filterPosts(allPosts, searchTerm) {
@@ -102,4 +102,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   function clearError() {
     errorDiv.textContent = '';
   }
+
+  // % 필터링된 게시글을 표시하는 함수
+  function filterPostEvent() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    if(!searchTerm) {
+      window.alert('검색어를 입력해주세요');
+    }
+
+    const filteredPost = filterPosts(allPosts, searchTerm);
+
+    if(filteredPost.length === 0) {
+      showError('일치하는 post가 없습니다.')
+    } else {
+      displayPosts(filteredPost);
+      clearError();
+    }
+  }
+  // % search-button 클릭 시 검색
+  const searchButton = document.getElementById('search-button');
+
+  searchButton.addEventListener('click', () => {
+    filterPostEvent();
+  })
+  // % search-input에서 Enter 누를 시 검색
+  searchInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+      filterPostEvent();
+    }
+  })
+
 });
