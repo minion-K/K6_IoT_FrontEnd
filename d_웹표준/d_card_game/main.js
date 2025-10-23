@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < 12; i++) {
       cardContainer.innerHTML += `
         <div class="card">
-          <dlv class="card-inner">
+          <div class="card-inner">
             <div class="card-front">
               <img src="./front.jpg" alt="카드의 앞면">
             </div>
             <div class="card-back" style="background-color: ${cardColors[i]};"></div>
-          </dlv>
+          </div>
         </div>
       `;
     }
@@ -74,11 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ? bool 속성
     // 속성값이 true, false 뿐 (기본값: false)
     // disabled 속성: 요소에 대한 컨트롤의 비활성화를 지정
-    completedButton.disable = true; 
+    completedButton.disabled = true; 
 
     // ? 모든 카드 뒤집기(뒷면 공개 - 색상)
     setTimeout(() => {
-      document.querySelectorAll('card').forEach(card => {
+      document.querySelectorAll('.card').forEach(card => {
         // 각 요소를 모두 뒤집기
         card.classList.add('flipped');
       })
@@ -88,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       document.querySelectorAll('.card').forEach(card => {
         // 각 요소를 다시 원래 상태로 되돌림
-        card.classList.remove('filpped');
+        card.classList.remove('flipped');
       });
 
       // ? 완료 버튼 다시 활성화
-      completedButton.disable = false;
+      completedButton.disabled = false;
     }, 2000); // 2초 뒤에 복구
   }
 
@@ -102,30 +102,165 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
-      card.addEventListener('click', filpCard); // filpCard 등록
+      card.addEventListener('click', flipCard); // filpCard 등록
     });
   }
 
-  // % 4) 카드를 뒤집는 함수 정의
-  function filpCard() {
+  // ? 전역 변수 선언
+  // 1) 게임 시작 상태 추적 변수
+  // : 시작 버튼과 재시작 버튼에 대한 이벤트 리스너
+  let isGameStarted = false;
 
+  // 2) 카드가 뒤집혔는지 여부
+  let hasFlippedCard = false; // 첫 번째 카드가 선택되지 않은 것이 기본값
+
+  // 3) 첫 번째, 두 번째 선택된 카드
+  let firstCard, secondCard;
+
+  // 4) 게임판 잠김 여부
+  let lockBoard = false; // 잠기지 않은 것이 기본값
+
+  // % 4) 카드를 뒤집는 함수 정의
+  //: 각 카드 클릭 시 호출
+  function flipCard() {
+    if(!isGameStarted || lockBoard) return;
+
+    // ? this 키워드
+    // : 함수 선언문에서 this는 해당 함수가 실행된 객체 그 자체
+    this.classList.add('flipped');
+
+    if(!hasFlippedCard) {
+      hasFlippedCard = true;
+      firstCard = this;
+    } else {
+      hasFlippedCard = false; // 다음 쌍의 선택을 위한 기본값 선언
+      secondCard = this;
+    }
+
+    // ? 두 카드가 일치하는지 확인
+    checkForMatch();
   }
+
+  // document.querySeletor('')
+  // >> 해당 문서 내에서 선택자 검색
+
+  // A요소.querySelector('')
+  // >> A요소 내부의 선택자 검색
 
   // % 5) 두 카드가 일치하는지 확인하는 함수 정의
   function checkForMatch() {
+    if(!firstCard || !secondCard) return;
+    let isMatch 
+      = firstCard.querySelector('.card-back').style.backgroundColor
+        === secondCard.querySelector('.card-back').style.backgroundColor;
 
+    isMatch ? disableCards() : unFlippedCards();
   }
 
   // % 6) 매치된 카드를 처리하는 함수
   function disableCards() {
+    // 카드를 뒤집는 기능 제거
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
 
+    // ? 새로운 카드 선택을 위한 초기화(변수 초기화)
+    resetBoard();
+    
   }
 
   // % 7) 매치되지 않은 카드를 다시 뒤집는 함수 정의
-  function unFippedCards() {
+  function unFlippedCards() {
+    lockBoard = true; // 게임판 잠금
 
+    setTimeout(() => {
+      firstCard.classList.remove('flipped');
+      secondCard.classList.remove('flipped');
+
+      resetBoard();
+    }, 1000);
+
+    
   }
 
+  // % 8) 게임판 변수 초기화 함수 정의
+  function resetBoard() {
+    [hasFlippedCard, lockBoard] =[false, false];
+    [firstCard, secondCard] = [null, null];
+  }
+
+  // % 9) 버튼 가시성 토글 함수
+  function toggleButtonVisibility(isGameStarted) {
+    // 게임 시작 여부가 true면: startButton 보여지지 않음
+    startButton.style.display = isGameStarted ? 'none' : 'block';
+
+    // 게임 시작 여부가 false면: 보여지지 않음
+    resetButton.style.display = isGameStarted ? 'block' : 'none';
+    completedButton.style.display = isGameStarted ? 'block' : 'none';
+  }
+
+  // % 각 버튼에 대한 이벤트 핸들러 등록
+  // ? 게임 시작 시간을 기록할 변수 선언
+  let gameStartTime;
+
+  // 시작 버튼
+  startButton.addEventListener('click', () => {
+    initializeGame(); // 게임 초기화
+    gameStartTime = new Date(); // 현재 시간을 게임 시작 시간으로 설정
+
+    // 버튼의 가시성 설정: 시작X, 재시작O, 완료O
+    toggleButtonVisibility(true);
+
+    revealCardsTemporary() // 모든 카드를 일시적으로 공개
+
+    isGameStarted = true;
+  });
+  
+  // 재시작 버튼
+  resetButton.addEventListener('click', () => {
+    initializeGame(); // 게임 초기화
+
+    gameStartTime = new Date();
+
+    toggleButtonVisibility(true);
+
+    revealCardsTemporary();
+    isGameStarted = true;
+  });
+
+  // 완료 버튼
+  completedButton.addEventListener('click', () => {
+    // 모든 카드가 뒤집혀 있는지 확인
+
+    // every() 메서드
+    // : (콜백)함수를 인자로 받는 배열 메서드
+    // - 배열의 모든 요소가 주어진 함수 조건식을 만족할 때 (true값일 경우) true를 반환
+    // - 모든 카드 요소에 flipped 클래스 속성이 존재하면 >> 모두 뒤집어짐
+    const allFlipped = Array.from(document.querySelectorAll('.card')).every(card => card.classList.contains('flipped'));
+
+    // ? document.querySeletorAll('')
+    // >> 배열과 비슷한 객체 (NodeList 객체)
+    // >> 배열 콜백 메서드 사용 시 실질적인 배열로 변환이 필수
+    // Array.from(NodeList)를 사용해야 .map(), .every(), .filter() 사용이 가능
+
+    if(allFlipped) {
+      // 모든 카드가 뒤집힌 경우
+      const gameTime = new Date() - gameStartTime;
+      
+      // new Date() : 현재 날짜, 시간을 밀리초 단위로 반환
+      alert(`게임 완료! 소요시간: ${Math.floor(gameTime / 1000)} 초`);
+
+      isGameStarted = false;
+      initializeGame();
+
+      toggleButtonVisibility(false); // 시작 버튼만 보이도록
+    } else {
+      alert('완료되지 않았습니다.');
+    }
+  });
+
+
+  // 버튼 표시 - 초기에는 시작 버튼만 표시
+  toggleButtonVisibility(false);
   // 게임 초기화 & 화면 렌더링
   initializeGame();
 });
@@ -144,7 +279,7 @@ function shuffle(array) {
     // Math.random() * (i + 1)
     // : 0부터 i 까지의 무작위 인덱스가 생성
     // +) Math.floor(): 소수점 내림
-    let j = Math.floor(Math.random * (i + 1));
+    let j = Math.floor(Math.random() * (i + 1));
 
     // ? 구조 분해 할당
     // : 배열의 i번째 요소와 j번째 요소를 서로 바꿈

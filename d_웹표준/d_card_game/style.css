@@ -72,9 +72,9 @@ h1 {
 }
 
 /* .card요소에 .filpped class 속성이 있는 경우 */
-.card.filpped .card-inner{
+.card.flipped .card-inner{
   /* y축을 기준으로 180도 전환 */
-  transform:rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
