@@ -14,4 +14,4 @@ let textMsg2: string = '텍스트 문자열 입니다.';
 
 type NumberType = number;
 let num1: NumberType = 123;
-let num2: number 234;
+let num2: number = 234;
