@@ -78,3 +78,22 @@ type Engine = {
 }
 
 type Car = Vehicle & Engine;
+
+function craeteCar(vehicle: Vehicle, engine: Engine): Car{
+  return {...vehicle, ...engine}
+}
+
+let vehicle: Vehicle = {
+  brand: 'kia',
+  model: 'avante',
+  year: 2020
+}
+
+let engine: Engine = {
+  horsePower: 500,
+  fuelType: '경유'
+}
+
+const car = craeteCar(vehicle, engine);
+
+console.log(car);
