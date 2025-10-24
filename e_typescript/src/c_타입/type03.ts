@@ -9,9 +9,83 @@
 
 // % 1. 변수 타입 별칭: 사용 X
 type textType = string;
-let textMsg1: textType = '텍스트 문자열 입니다.';
-let textMsg2: string = '텍스트 문자열 입니다.';
+let textMsg1: textType = "텍스트 문자열 입니다.";
+let textMsg2: string = "텍스트 문자열 입니다.";
 
 type NumberType = number;
 let num1: NumberType = 123;
 let num2: number = 234;
+
+// cf) 원시 타입 키워드 그대로를 사용하는 것이 코드 해석 & 가독성에 도움
+
+// % 2. 객체 타입 별칭
+type UserType = {
+  name: string;
+  height: number;
+};
+
+const user1: UserType = {
+  name: "홍길동",
+  height: 173,
+};
+
+const user2: UserType = {
+  name: '',
+  height: 178
+}
+
+// % 3. 함수 타입 별칭
+// : UserType 타입인 매개변수를 받아 boolean 타입의 반환값을 생성하는 함수
+// - type 타입별칭 = (매개변수: 타입 지정) => 반환 타입;
+type ValidUser = (user:UserType) => boolean;
+
+// cf) 함수 타입 별칭 사용 시 함수 표현식 또는 화살표 함수 사용 권장
+const isValidUser: ValidUser = (user) => user.name !== '';
+
+console.log(isValidUser(user1)); // true
+console.log(isValidUser(user2)); // false
+
+type FuncType = (num: number) => number;
+
+const exampleFunc: FuncType = (num) => {
+  num *= 2;
+  return num;
+}
+
+console.log(exampleFunc(3)); // 6
+
+type ArrayReturnType = (num: number) => number[];
+
+const arrayReturnFunc: ArrayReturnType = (num) => {
+  return [num, num];
+}
+
+console.log(arrayReturnFunc(4)); // [ 4, 4 ]
+
+// === 타입 별칭 사용 ===
+
+//! 문제 1: 타입 어노테이션 사용
+// 변수 age를 선언하고 숫자 타입으로 어노테이션을 지정
+// 변수 isStudent를 선언하고 불리언 타입으로 어노테이션을 지정
+// 위 두 변수에 적절한 값을 할당하고, 콘솔에 출력
+let age: number;
+let isStudent: boolean
+age = 31;
+isStudent = false;
+console.log(age, isStudent);
+
+
+//! 문제 2: 타입 별칭 사용
+// ProductType이라는 타입 별칭을 생성
+// 객체, id (문자열 타입), name (문자열 타입), price (숫자 타입) 속성 포함
+type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+};
+
+let Product: ProductType = {
+  id: '1',
+  name: '노트북',
+  price: 920000
+}
