@@ -45,8 +45,8 @@ function getAllTodos(todos: TodoItem[]) {
   return todos;
 }
 
-function filterTodos(todos: TodoItem[], completed: boolean) {
-  const filteredTodo = todos.filter(todo => todo.completed === completed);
+function filterTodos(todos: TodoItem[], b: boolean) {
+  const filteredTodo = todos.filter(todo => todo.completed === b);
   
 
   return filteredTodo;
