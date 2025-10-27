@@ -11,15 +11,15 @@ type StringOrNumber = string | number;
 function unionGeneric<T extends StringOrNumber>(value: T) {
   // T 타입 변수에는 문자열 또는 숫자형 자료형 사용
 
-  if(typeof value === 'string') {
+  if (typeof value === "string") {
     return value.toLowerCase();
   }
 
   return value; // 문자가 아닌 자료형(숫자형) 반환
 }
 
-const result1 = unionGeneric('sTrinG');
-const result2= unionGeneric(1000);
+const result1 = unionGeneric("sTrinG");
+const result2 = unionGeneric(1000);
 
 console.log(result1, result2); // string 1000
 
@@ -34,33 +34,33 @@ interface User {
   age: number;
 }
 
-interface UpdatedUser {
-  name?: String;
-  age?: number;
-}
+// interface UpdatedUser {
+//   name?: String;
+//   age?: number;
+// }
 
 type ObjectSignature = {
   [key: number]: User; // 인덱스 시그니쳐(서명)
-}
+};
 
 const users: ObjectSignature = {
   1: {
-    name: '홍길동',
-    age: 20
+    name: "홍길동",
+    age: 20,
   },
   2: {
-    name: '김철수',
-    age: 20
-  }
-}
+    name: "김철수",
+    age: 20,
+  },
+};
 
 //? 실전 예시) 사용자 정보 수정 함수
 // : id 값을 활용하여 해당 데이터에 name, age를 수정
 function UpdateUser(id: number, changes: Partial<User>) {
   const user = users[id];
 
-  if(!user) {
-    console.log('해당 ID의 사용자가 존재하지 않습니다.');
+  if (!user) {
+    console.log("해당 ID의 사용자가 존재하지 않습니다.");
     return;
   }
 
@@ -71,20 +71,20 @@ function UpdateUser(id: number, changes: Partial<User>) {
   // 3) 둘 다 있는 경우: { 기존의name, 기존의age, 변경될name, 변경될age} >> 모든 값이 changes로 수정
   // 4) 둘 다 없는 경우: 수정 X
 
-  users[id] = {...user, ...changes};
+  users[id] = { ...user, ...changes };
 }
 
-UpdateUser(1, { name: '이영희'});
+UpdateUser(1, { name: "이영희" });
 console.log(users[1]); // { name: '이영희', age: 20 }
 
-UpdateUser(2, { name: '김유리'});
+UpdateUser(2, { name: "김유리" });
 console.log(users[2]); // { name: '김유리', age: 20 }
 
-UpdateUser(1, { age: 25});
-UpdateUser(2, { age: 15});
+UpdateUser(1, { age: 25 });
+UpdateUser(2, { age: 15 });
 console.log(users[1], users[2]); // { name: '이영희', age: 25 } { name: '김유리', age: 15 }
 
-UpdateUser(1, {})
+UpdateUser(1, {});
 console.log(users[1]); // { name: '이영희', age: 25 }
 
 // % 2) readonly
@@ -97,26 +97,26 @@ interface Person {
 }
 
 let user: Readonly<Person> = {
-  name: '홍길동',
-  age: 25
-}
+  name: "홍길동",
+  age: 25,
+};
 
 // user.name = '김철수'
 // user.age = 30;
 // : 객체 자체가 변수일지라도 내부 속성들이 readonly 상수처럼 취급
-console.log(user.name) // 홍길동
-console.log(user.age) // 25
+console.log(user.name); // 홍길동
+console.log(user.age); // 25
 
 // % 3) Omit(생략하다)
 // : 특정 속성을 제거한 타입을 반환
 // - Omit<T, K>
 // - T 타입에서 K 속성을 제거
 
-interface Employee{
+interface Employee {
   id: number; // 사원번호
   name: string;
   age: number;
-  
+
   position: string; // 직급
   address: string;
   phone: string;
@@ -126,23 +126,23 @@ interface Employee{
 interface EmployeeNotAddress {}
 interface EmployeeNotAddressAndPhone {}
 
-type EmployeeForAccount = Omit<Employee, 'address'>;
-type EmployeeForGeneral = Omit<Employee, 'address' | 'phone'>;
+type EmployeeForAccount = Omit<Employee, "address">;
+type EmployeeForGeneral = Omit<Employee, "address" | "phone">;
 // >> Omit의 두 번째 인자는 유니온 타입 사용 가능
 
 const salaryA: EmployeeForAccount = {
   id: 1,
-  name: '홍길동',
-  age: 30, 
+  name: "홍길동",
+  age: 30,
 
-  position: '교육부',
-  phone: '010-1111-2222'
-}
+  position: "교육부",
+  phone: "010-1111-2222",
+};
 
 const generalA: EmployeeForGeneral = {
   id: 1,
-  name: '홍길동',
-  age: 30, 
+  name: "홍길동",
+  age: 30,
 
-  position: '교육부'
-}
+  position: "교육부",
+};
