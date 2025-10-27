@@ -58,8 +58,8 @@ function toggleTodo(todos: TodoItem[], id: number) {
   return changeTodos;
 }
 
-function setAllTodosCompletion(todos: TodoItem[], b: boolean) {
-  const changeTodos = todos.map(todo => ({...todo, b}));
+function setAllTodosCompletion(todos: TodoItem[], completed: boolean) {
+  const changeTodos = todos.map(todo => ({...todo, completed}));
 
   return changeTodos;
 }
