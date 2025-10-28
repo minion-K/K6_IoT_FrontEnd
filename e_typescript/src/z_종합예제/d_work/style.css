@@ -45,17 +45,18 @@ button:hover {
   border: 1px solid #ddd;
   margin-bottom: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .task-item button {
   background-color: red;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   color: white;
-  padding: 5px 10px;
+  padding: 10px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .task-item button:hover {
