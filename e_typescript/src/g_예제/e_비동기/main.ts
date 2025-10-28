@@ -47,7 +47,7 @@ async function fetchPhotos(page: number) {
 
     return photos.slice((page - 1) * photoPerPage, page * photoPerPage);
   } catch(e) {
-    console.error('Failes');
+    console.error('Failed');
     return [];
   }
 }
