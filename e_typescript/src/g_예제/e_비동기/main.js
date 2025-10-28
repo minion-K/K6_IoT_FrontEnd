@@ -101,13 +101,17 @@ document.getElementById('next-button').addEventListener('click', function () {
 //! 전체 프로젝트 실행
 function updatePhotos() {
     return __awaiter(this, void 0, void 0, function () {
-        var photos;
+        var photos, pageNumber;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetchPhotos(currentPage)];
                 case 1:
                     photos = _a.sent();
                     renderPhotos(photos);
+                    pageNumber = document.getElementById('page-number');
+                    if (pageNumber) {
+                        pageNumber.textContent = "".concat(currentPage);
+                    }
                     return [2 /*return*/];
             }
         });

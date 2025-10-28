@@ -93,6 +93,12 @@ async function updatePhotos() {
   const photos = await fetchPhotos(currentPage);
 
   renderPhotos(photos);
+
+  const pageNumber = document.getElementById('page-number');
+
+  if(pageNumber) {
+    pageNumber.textContent = `${currentPage}`;
+  }
 }
 
 updatePhotos();
