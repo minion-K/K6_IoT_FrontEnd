@@ -45,8 +45,8 @@ function getAllTodos(todos: TodoItem[]) {
   return todos;
 }
 
-function filterTodos(todos: TodoItem[], b: boolean) {
-  const filteredTodo = todos.filter(todo => todo.completed === b);
+function filterTodos(todos: TodoItem[], completed: boolean) {
+  const filteredTodo = todos.filter(todo => todo.completed === completed);
   
 
   return filteredTodo;
@@ -55,7 +55,7 @@ function filterTodos(todos: TodoItem[], b: boolean) {
 function toggleTodo(todos: TodoItem[], id: number) {
   const changeTodos = todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo);
 
-  return changeTodos;
+  return changeTodos; 
 }
 
 function setAllTodosCompletion(todos: TodoItem[], completed: boolean) {
@@ -86,7 +86,7 @@ console.log(todos);
 todos = getAllTodos(todos);
 console.log(todos);
 
-todos = filterTodos(todos, false);
+todos = filterTodos(todos, true);
 console.log(todos);
 
 todos = toggleTodo(todos, 2);

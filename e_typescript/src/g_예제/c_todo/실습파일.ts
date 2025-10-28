@@ -18,10 +18,11 @@
 type _Task<T> = {
   //# 속성 3가지
   // 할 일의 고유 번호. 각 할 일을 구별하는 데 사용
-  
+  id: number;
   // 할 일의 내용. 제네릭 타입 - 다양한 자료형을 할 일 내용을 사용 가능
-
+  task: T
   // 할 일의 완료 상태를 저장하는 속성
+  completed: boolean;
 }
 
 // TaskManager 클래스
