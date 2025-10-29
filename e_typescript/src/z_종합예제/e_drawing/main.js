@@ -38,7 +38,10 @@ function createToolbar() {
     sizeInput.max = '10';
     //cf) input 태그의 value 값은 string
     sizeInput.value = toolState.size.toString();
-    sizeInput.oninput = function () { return setTool('size', parseInt(sizeInput.value)); };
+    sizeInput.oninput = function () {
+        setTool('size', parseInt(sizeInput.value));
+        console.log(sizeInput.value);
+    };
     //& 지우개 버튼
     var eraserButton = document.createElement('button');
     eraserButton.textContent = '지우개';
@@ -51,14 +54,14 @@ function createToolbar() {
     var clearButton = document.createElement('button');
     clearButton.textContent = '초기화';
     // 지정된 사각형 영역을 지워 투명하게 만드는 기능(x시작, y시작, x끝, y끝)
-    clearButton.onclick = function () { return ctx === null || ctx === void 0 ? void 0 : ctx.clearButton(0, 0, canvas.width, canvas.height); };
+    clearButton.onclick = function () { return ctx === null || ctx === void 0 ? void 0 : ctx.clearRect(0, 0, canvas.width, canvas.height); };
     //& 그림 저장 버튼
     var saveButton = document.createElement('button');
     saveButton.textContent = '저장';
     saveButton.onclick = function () {
         var link = document.createElement('a');
         link.download = 'drawing.png'; // 저장 파일명
-        link.href = canvas.toDataUrl(); // 이미지 URL 생성
+        link.href = canvas.toDataURL(); // 이미지 URL 생성
         link.click(); // 자동 다운로드 실행
     };
     //& 툴바 한 곳에 저장
@@ -72,5 +75,39 @@ function createToolbar() {
 var canvas = document.createElement('canvas');
 canvas.width = 800;
 canvas.height = 500;
+//! 6) 2D 그리기 컨텍스트 가져오기
+var ctx = canvas.getContext('2d');
+if (ctx) {
+    ctx.lineCap = 'round'; // 선 끝 둥글게
+}
+//! 7) 마우스 이벤트 상태
+var isDrawing = false;
+//? 마우스 눌렀을 때
+canvas.addEventListener('mousedown', function (e) {
+    isDrawing = true;
+    ctx === null || ctx === void 0 ? void 0 : ctx.beginPath(); // 경로 시작 - 그리기 시작
+    ctx === null || ctx === void 0 ? void 0 : ctx.moveTo(e.offsetX, e.offsetY); // 그리기 시작 점 설정
+});
+//? 마우스 이동 시 (그림을 그리고 있을 때)
+canvas.addEventListener('mousemove', function (e) {
+    if (!isDrawing)
+        return;
+    if (ctx) {
+        ctx.strokeStyle = toolState.isEraser ? 'white' : toolState.color;
+        ctx.lineWidth = toolState.size;
+        ctx.lineTo(e.offsetX, e.offsetY); // 선을 그릴 좌표
+        ctx.stroke(); // 선 그리기
+    }
+});
+//? 마우스 뗐을 때
+canvas.addEventListener('mouseup', function () {
+    isDrawing = false; // 그리기 종료
+    ctx === null || ctx === void 0 ? void 0 : ctx.closePath(); // 경로 추적 종료
+});
+//? 캔버스를 벗어난 경우 (뗀 경우와 마찬가지로 종료)
+canvas.addEventListener('mouseleave', function () {
+    isDrawing = false; // 그리기 종료
+    ctx === null || ctx === void 0 ? void 0 : ctx.closePath(); // 경로 추적 종료
+});
 app === null || app === void 0 ? void 0 : app.appendChild(createToolbar());
 app === null || app === void 0 ? void 0 : app.appendChild(canvas);

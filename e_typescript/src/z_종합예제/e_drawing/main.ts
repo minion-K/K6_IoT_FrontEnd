@@ -53,8 +53,10 @@ function createToolbar(): HTMLElement {
   sizeInput.max = '10';
   //cf) input 태그의 value 값은 string
   sizeInput.value = toolState.size.toString();
-  sizeInput.oninput = () => setTool('size', parseInt(sizeInput.value));
-
+  
+  sizeInput.oninput = () => {setTool('size', parseInt(sizeInput.value));
+    console.log(sizeInput.value);}
+  
   //& 지우개 버튼
   const eraserButton = document.createElement('button');
   eraserButton.textContent = '지우개';
@@ -68,7 +70,7 @@ function createToolbar(): HTMLElement {
   const clearButton = document.createElement('button');
   clearButton.textContent = '초기화';
   // 지정된 사각형 영역을 지워 투명하게 만드는 기능(x시작, y시작, x끝, y끝)
-  clearButton.onclick = () => ctx?.clearButton(0, 0, canvas.width, canvas.height);
+  clearButton.onclick = () => ctx?.clearRect(0, 0, canvas.width, canvas.height);
 
   //& 그림 저장 버튼
   const saveButton = document.createElement('button');
@@ -76,7 +78,7 @@ function createToolbar(): HTMLElement {
   saveButton.onclick = () => {
     const link = document.createElement('a');
     link.download = 'drawing.png';  // 저장 파일명
-    link.href = canvas.toDataUrl(); // 이미지 URL 생성
+    link.href = canvas.toDataURL(); // 이미지 URL 생성
     link.click();                   // 자동 다운로드 실행
   }
 
@@ -95,7 +97,45 @@ canvas.width = 800;
 canvas.height = 500;
 
 //! 6) 2D 그리기 컨텍스트 가져오기
+const ctx = canvas.getContext('2d');
 
+if(ctx) {
+  ctx.lineCap = 'round'; // 선 끝 둥글게
+}
+
+//! 7) 마우스 이벤트 상태
+let isDrawing = false;
+
+//? 마우스 눌렀을 때
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  ctx?.beginPath();                   // 경로 시작 - 그리기 시작
+  ctx?.moveTo(e.offsetX, e.offsetY);  // 그리기 시작 점 설정
+})
+//? 마우스 이동 시 (그림을 그리고 있을 때)
+canvas.addEventListener('mousemove', (e) => {
+  if(!isDrawing) return;
+
+  if(ctx) {
+    ctx.strokeStyle = toolState.isEraser ? 'white' : toolState.color;
+    ctx.lineWidth = toolState.size;
+    ctx.lineTo(e.offsetX, e.offsetY); // 선을 그릴 좌표
+    ctx.stroke(); // 선 그리기
+  }
+})
+
+//? 마우스 뗐을 때
+canvas.addEventListener('mouseup', () => {
+  isDrawing = false; // 그리기 종료
+  ctx?.closePath();  // 경로 추적 종료
+});
+
+
+//? 캔버스를 벗어난 경우 (뗀 경우와 마찬가지로 종료)
+canvas.addEventListener('mouseleave', () => {
+  isDrawing = false; // 그리기 종료
+  ctx?.closePath();  // 경로 추적 종료
+})
 
 app?.appendChild(createToolbar());
 app?.appendChild(canvas);
