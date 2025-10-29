@@ -2,7 +2,9 @@
 // - import 시 폴더명만으로 가져오기 가능
 import React from 'react'
 import B_Counter from './B_React_Counter'
-import C_Component from './C_Component'
+import C_Component, { Img, img } from './C_Component'
+import D_JSX from './D_JSX'
+import E_JSX from './E_JSX'
 
 const h2Style ={
   backgroundColor: 'black',
@@ -29,7 +31,15 @@ function Index() {
 
       <h2 style={h2Style}>2. Component: 리액트를 구성하는 기본 구조</h2>
       <C_Component/>
-      
+      {/* 컴포넌트: 재사용 가능한 UI 집합 */}
+      <div style={{ backgroundColor: 'pink '}}>
+        <Img />
+        {img()}
+      </div>
+
+      <h2 style={h2Style}>3. JSX(TSX): 리액트의 기본 문법</h2>
+      <D_JSX />
+      <E_JSX />
     </div>
     
   )

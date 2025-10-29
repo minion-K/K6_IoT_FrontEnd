@@ -1,6 +1,7 @@
 import React from 'react'
 // import B_React_Counter from './B_React_Counter'
 import B_React_Counter from '@/pages/a_basic/B_React_Counter'
+import dog from '@/assets/images/강아지이미지.jpg'
 
 /*
 ! 컴포넌트(Component)
@@ -34,10 +35,52 @@ import B_React_Counter from '@/pages/a_basic/B_React_Counter'
   - 외부에서 인식 가능한 컴포넌트로 생성
 */
 
-function C_Component() {
+//! 컴포넌트 생성
+// Img 컴포넌트
+export function Img() {
+  //? TS 코드 내에서 HTML 코드 작성 시 
+  // : () 소괄호 내에 작성
+
+  //? HTML 코드 내에서 TS 코드 작성 시
+  //: {} 중괄호 내에 작성
+
+  //? 함수형 컴포넌트(tsx)는 return 시 HTML을 반환
   return (
-    <div>안녕하세요</div>
-  )
+    // 컴포넌트 내의 HTML 코드 작성 시
+    // : 최상위 노드(요소)는 반드시 하나
+    // - 비워질 수 없음
+    <div>
+      <p>Img 컴포넌트의 시작</p>
+      {/* HTML 코드 내에서 TS 문법 사용 시 {} 사용 */}
+      <img src={dog} alt="강아지이미지" width={300}/>
+    </div>
+    // <div>
+
+    // </div>
+  );
+}
+
+//? 일반 함수 (컴포넌트 X)
+// HTML) 대소문자 구분 X: <p> === <P>
+// TSX) 대소문자 구분 O: <p> !== <P>
+//      : React 컴포넌트
+export function img() {
+  return '이미지 (일반 함수)';
+}
+
+function C_Component() {
+  // TSX 컴포넌트 사용 시
+  // : 마크업(태그)이 한 개인 경우 return 뒤 () 소괄호 생략 가능
+  // - 여러 개일 경우 반드시! 소괄호로 감싸서 표현
+  // return <Img />
+  return (
+    <div>
+      {img()}
+      {/* 컴포넌트 태그는 단일 태그 사용 권장 <컴포넌트명 /> */}
+      <Img />
+      <Img />
+    </div>
+  );
 }
 
 export default C_Component
