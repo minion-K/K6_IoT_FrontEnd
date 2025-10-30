@@ -41,7 +41,8 @@ interface TodoItemProps {todoItem: Todo}
 function TodoItem({todoItem}: TodoItemProps) {
   return (
     <div>
-      <p>{todoItem.done === true ? '👉' + todoItem.text : todoItem.text}</p>
+      {/* <p>{todoItem.done === true ? '👉' + todoItem.text : todoItem.text}</p> */}
+      <p>{todoItem.done && '👉'}{todoItem.text}</p>
     </div>
   )
 }

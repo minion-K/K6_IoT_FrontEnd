@@ -49,7 +49,7 @@ function Item({name, isPacked}: ItemType) {
         - A가 false면 B값 출력 X
         - A가 true면 B값 출력
       */}
-      {name}{0 && '✔️'}
+      {name}{isPacked && '✔️'}
     </li>
   )
 }
