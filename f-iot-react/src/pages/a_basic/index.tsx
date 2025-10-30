@@ -5,6 +5,7 @@ import B_Counter from './B_React_Counter'
 import C_Component, { Img, img } from './C_Component'
 import D_JSX from './D_JSX'
 import E_JSX from './E_JSX'
+import F_Review, { ExampleComponenet } from './F_Review'
 
 const h2Style ={
   backgroundColor: 'black',
