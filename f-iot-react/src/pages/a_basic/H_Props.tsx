@@ -25,9 +25,27 @@ const UserCard = ({ user }: UserCardProps) => {
 
   return (
     <>
-      <p>{user.name}</p> / <p>{user.age}</p> / <p>{user.email}</p>
-      <p>{name}</p> / <p>{age}</p> / <p>{email}</p>
+      <p>{user.name} / {user.age} / {user.email}</p>
+      <p>{name} / {age} / {email}</p>
     </>
+  )
+}
+
+//! Wrapper 컴포넌트
+// : 다른 컴포넌트를 감싸는 컴포넌트
+// - props 데이터로 다른 컴포넌트(ReactNode)를 전달받음
+// - 자식 컴포넌트를 안전하게 받기 위한 타입
+
+type ChildrenType = {
+  // ReactNode: React 내의 HTML 요소들 + 사용자 정의 컴포넌트들의 타입
+  children: React.ReactNode;
+}
+
+export const Wrapper = ({ children }: ChildrenType) => {
+  return (
+    <div style={{border: '2px solid black', padding: '16px'}}>
+      {children}
+    </div>
   )
 }
 
@@ -49,6 +67,10 @@ function H_Props() {
 
       <UserCard user={{ name: '홍길동', age: 32, email: 'qwe123' }}/>
       <UserCard user={userData} />
+
+      <Wrapper>
+        <div>안녕하세요 반나서 반갑습니다.</div>
+      </Wrapper>
     </div>
   )
 }

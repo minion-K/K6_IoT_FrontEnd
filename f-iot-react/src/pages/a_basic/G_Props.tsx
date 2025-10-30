@@ -1,4 +1,5 @@
 import React from 'react'
+import { Wrapper } from './H_Props';
 
 /*
   cf) 컴포넌트(Component): 리액트의 구성 요소(UI)
@@ -95,7 +96,7 @@ function G_Props() {
   }
 
   return (
-    <>
+    <Wrapper>
       <ChildComponent name='김철수'/>
       <ChildComponent2 name='홍길동'/>
       <ChildComponent3 name='이영희'/>
@@ -104,9 +105,9 @@ function G_Props() {
       <MultiProps2 name='이지훈' colorProps='lightcoral'/>
       <MultiProps2 colorProps='lightgreen'/>
 
-      {/* ...props가 구조 분해 할당을 사용하여 각각의 속성명을 참아감 */}
+      {/* ...props가 구조 분해 할당을 사용하여 각각의 속성명을 찾아감 */}
       <MultiProps2 {...props}/>
-    </>
+    </Wrapper>
   )
 }
 
