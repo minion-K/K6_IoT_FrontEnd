@@ -43,13 +43,13 @@ function Item({name, isPacked}: ItemType) {
   //& 3. 논리 연산자를 사용한 조건부 렌더링
   return (
     <li>
-      {/* 
+      {/*
         == 논리 연산자 A && B
         : 모든 값이 true여야 true값 반환
         - A가 false면 B값 출력 X
         - A가 true면 B값 출력
       */}
-      {name}{isPacked && '✔️'}
+      {name}{0 && '✔️'}
     </li>
   )
 }
