@@ -9,6 +9,7 @@ import F_Review, { ExampleComponenet } from './F_Review'
 import G_Props from './G_Props'
 import H_Props from './H_Props'
 import I_Rendering from './I_Rendering'
+import J_handler from './J_handler'
 
 const h2Style ={
   backgroundColor: 'black',
@@ -51,6 +52,9 @@ function Index() {
 
       <h2 style={h2Style}>5. Rendering: 조건부 렌더링</h2>
       <I_Rendering />
+
+      <h2 style={h2Style}>6. Handler: 리액트의 이벤트 핸들러</h2>
+      <J_handler/>
     </div>
     
   )
