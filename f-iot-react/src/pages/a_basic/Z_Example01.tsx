@@ -27,10 +27,37 @@ const users = [
 ]
 
 */
+interface GreetingProps {
+  name: string;
+  message?: string;
+}
+
+function GreetingCard({name, message}: GreetingProps) {
+  return (
+    <li>
+      {name} : {message || 'Hello'}
+    </li>
+  )
+}
+
 
 function Z_Example01() {
+  const users = [
+    { name: '곰', message: '오늘도 파이팅!'},
+    { name: '호랑이'},
+    { name: '사자', message: '리액트 재밌어요!'}
+  ]
+
   return (
-    <div>Z_Example</div>
+    <ul>
+      {users.map((user, index) => (
+        <GreetingCard 
+          key={index}
+          name={user.name}
+          message={user.message}
+        />
+      ))}
+    </ul>
   )
 }
 

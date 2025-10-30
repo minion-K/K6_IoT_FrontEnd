@@ -10,6 +10,8 @@ import G_Props from './G_Props'
 import H_Props from './H_Props'
 import I_Rendering from './I_Rendering'
 import J_handler from './J_handler'
+import Z_Example01 from './Z_Example01'
+import Z_Example02 from './Z_Example02'
 
 const h2Style ={
   backgroundColor: 'black',
@@ -55,6 +57,12 @@ function Index() {
 
       <h2 style={h2Style}>6. Handler: 리액트의 이벤트 핸들러</h2>
       <J_handler/>
+
+      <h2 style={h2Style}>Z_Example01</h2>
+      <Z_Example01 />
+
+      <h2 style={h2Style}>Z_Example02</h2>
+      <Z_Example02 />
     </div>
     
   )
