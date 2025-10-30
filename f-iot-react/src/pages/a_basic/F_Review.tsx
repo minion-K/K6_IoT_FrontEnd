@@ -66,9 +66,7 @@ import React from 'react'
 
 function F_Review() {
   return (
-    <>
-      <ExampleComponenet />
-    </>
+    <></>
   )
 }
 
