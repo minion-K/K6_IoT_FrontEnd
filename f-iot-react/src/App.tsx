@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Basic from './pages/a_basic'
 import RoutePages from '@/pages/b_Route'
+import Hooks from '@/pages/c_hooks'
 import Navibar from './components/Navibar'
 import PostList from './pages/a_basic/PostList'
 import PostDetail from './components/PostDetail'
@@ -22,6 +23,7 @@ function App() {
         <Route path='/route/*' element={<RoutePages />}/>
 
         <Route path='/practice/post' element={<PostList />} />
+        <Route path='/hooks' element={<Hooks />}/>
         <Route path='/practice/post/:id' element={< PostDetail/>} />
       </Routes>
     </>
