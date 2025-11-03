@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 //! Hooks
 // : 리액트 '함수형 컴포넌트'에서 사용할 수 있는 기능
@@ -44,11 +44,11 @@ function State01() {
   // } - 사용 X
 
   //! === HOOKS (useState) ===
-  //? useState 실습 예제 - 카운터 컴포넌트 
+  //? useState 실습 예제 - 카운터 컴포넌트
   const [count, setCount] = useState<number>(0);
-  const [message, setMessage] = useState<string>('안녕하세요');
+  const [message, setMessage] = useState<string>("안녕하세요");
   // if(true) {
-    const [msg, setMsg] = useState('반갑습니다.');
+  const [msg, setMsg] = useState("반갑습니다.");
   // }
 
   //! 이벤트 핸들러 정의
@@ -67,14 +67,14 @@ function State01() {
     //     setCount(() => {})
     //     >> 해당 콜백함수의 인자는 '상태의 최신값'
     //     >> prev-상태명 (prevName, prevCount, prevUser / previous 이전의)
-    setCount(prevCount => prevCount + 1); // 0 + 1 === 1
-    setCount(prevCount => prevCount + 1); // 1 + 1 === 2
-  }
+    setCount((prevCount) => prevCount + 1); // 0 + 1 === 1
+    setCount((prevCount) => prevCount + 1); // 1 + 1 === 2
+  };
   const handleDownClick = () => {
     // setCount(count - 1);
-    setCount(prevCount => prevCount - 1);
-    setCount(prevCount => prevCount - 1);
-  }
+    setCount((prevCount) => prevCount - 1);
+    setCount((prevCount) => prevCount - 1);
+  };
   return (
     <div>
       <p>카운트 클릭 횟수: {count}</p>
@@ -84,7 +84,7 @@ function State01() {
       <p>{message}</p>
       <p>{msg}</p>
     </div>
-  )
+  );
 }
 
-export default State01
+export default State01;
