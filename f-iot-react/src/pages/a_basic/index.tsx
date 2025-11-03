@@ -12,13 +12,13 @@ import I_Rendering from './I_Rendering'
 import J_handler from './J_handler'
 import Z_Example01 from './Z_Example01'
 import Z_Example02 from './Z_Example02'
+import Z_Example03 from './Z_Example03'
+import Z_Example04 from './Z_Example04'
 
 const h2Style ={
   backgroundColor: 'black',
   color: 'orange'
 }
-
-
 
 // React는 반드시 컴포넌트명이 대문자
 function Index() {
@@ -63,8 +63,13 @@ function Index() {
 
       <h2 style={h2Style}>Z_Example02</h2>
       <Z_Example02 />
+
+      <h2 style={h2Style}>Z_Example03</h2>
+      <Z_Example03 />
+
+      <h2 style={h2Style}>Z_Example04</h2>
+      <Z_Example04 />
     </div>
-    
   )
 }
 
