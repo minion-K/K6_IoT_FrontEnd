@@ -36,7 +36,7 @@ function State01() {
   //? useState 호출 규칙
   //% - 반드시 컴포넌트의 최상단에서 호출
   // : 조건문, 반복문, 내부 함수에서 호출 불가
-  //% - hooks는 React 내부의 함수 - import하여 사용
+  //% - hooks는 React 내부의 함수 - import하여 사용 
   // - 여러 개의 상태 사용 시, 관련 있는 hook끼리 묶어서 컴포넌트 상단에 배치 -> 가독성 향상
 
   // if(true) {
