@@ -30,7 +30,7 @@ function State01() {
 
   //% state           : 현재 상태 값(변수)
   //% setState        : 상태를 업데이트하는 함수
-  //% initialValue    : 초기값, 초기 상태를 설정(생략 가능 - undefinec 값)
+  //% initialValue    : 초기값, 초기 상태를 설정(생략 가능 - undefined 값)
   // 명명 규칙: set + 상태명(name -> setName, count -> setCount, post -> setPost)
 
   //? useState 호출 규칙
