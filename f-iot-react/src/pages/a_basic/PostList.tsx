@@ -9,7 +9,7 @@ function PostList() {
       {posts.length > 0 ? (
         posts.map(post => <PostCard post={post} key={post.id} />)
       ) : (
-        <p>게시글이 없습니다.</p>
+        <p>게시k글이 없습니다.</p>
       )}
     </div>
   )

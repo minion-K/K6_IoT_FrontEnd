@@ -29,8 +29,8 @@ import React from 'react'
 
 //% 3) 동적으로 이동하는 페이지에서 변수값 추출
 //    : useParams를 호출하면 URL에서 변수들을 객체로 반환
-//    EX) const params = useParams(); //&PostDetail 컴포넌트 내에서 호출
-//        params.추출할변수명 -> params.id
+//    EX) const params = useParams(); //& PostDetail 컴포넌트 내에서 호출
+//        params.추출할변수명 -> params.id 
 
 function B_UseParams() {
   return (
