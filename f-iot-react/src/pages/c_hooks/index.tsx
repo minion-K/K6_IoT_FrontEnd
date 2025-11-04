@@ -10,6 +10,7 @@ import Ref01 from './b_useRef/Ref01'
 import Ref02 from './b_useRef/Ref02'
 import Practice01 from './b_useRef/Practice01'
 import Practice02 from './b_useRef/Practice02'
+import Effect01 from './c_useEffect/Effect01'
 
 const h2Style ={
   backgroundColor: 'black',
@@ -24,6 +25,9 @@ function Index() {
           color: 'white'
         }}
       >=== 리액트 Hooks ===</h1>
+      <h2 style={h2Style}>3. 리액트 Hooks - useEffect</h2>
+      <Effect01 /> <hr />
+      
       <h2 style={h2Style}>2. 리액트 Hooks - useRef</h2>
       <Ref01 /> <hr />
       <Ref02 /> <hr />
