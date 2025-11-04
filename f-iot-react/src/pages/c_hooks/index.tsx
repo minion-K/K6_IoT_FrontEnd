@@ -8,10 +8,11 @@ import State05 from "./a_useState/State05";
 import State06 from "./a_useState/State06";
 import Ref01 from "./b_useRef/Ref01";
 import Ref02 from "./b_useRef/Ref02";
-import Practice01 from "./b_useRef/Practice01";
-import Practice02 from "./b_useRef/Practice02";
+import Ref_Practice01 from "./b_useRef/Practice01";
+import Ref_Practice02 from "./b_useRef/Practice02";
 import Effect01 from "./c_useEffect/Effect01";
 import Effect02 from "./c_useEffect/Effect02";
+import Effect_Practice01 from "./c_useEffect/Practice01"
 
 //  Index 컴포넌트
 function Index() {
@@ -56,8 +57,8 @@ function Index() {
       >
         <Ref01 /> <hr />
         <Ref02 /> <hr />
-        <Practice01 /> <hr />
-        <Practice02 /> <hr />
+        <Ref_Practice01 /> <hr />
+        <Ref_Practice02 /> <hr />
       </CollapsibleSection>
 
       <CollapsibleSection
@@ -67,6 +68,7 @@ function Index() {
       >
         <Effect01 /> <hr />
         <Effect02 /> <hr />
+        <Effect_Practice01 /> <hr />
       </CollapsibleSection>
     </div>
   );
