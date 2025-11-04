@@ -9,6 +9,7 @@ import State06_Child from './a_useState/State06_Child'
 import Ref01 from './b_useRef/Ref01'
 import Ref02 from './b_useRef/Ref02'
 import Practice01 from './b_useRef/Practice01'
+import Practice02 from './b_useRef/Practice02'
 
 const h2Style ={
   backgroundColor: 'black',
@@ -27,6 +28,7 @@ function Index() {
       <Ref01 /> <hr />
       <Ref02 /> <hr />
       <Practice01 /> <hr />
+      <Practice02 /> <hr />
 
       <h2 style={h2Style}>1. 리액트 Hooks - useState</h2>
       <State01 /> <hr />
