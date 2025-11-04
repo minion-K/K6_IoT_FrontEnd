@@ -13,11 +13,13 @@ import Ref_Practice02 from "./b_useRef/Practice02";
 import Effect01 from "./c_useEffect/Effect01";
 import Effect02 from "./c_useEffect/Effect02";
 import Effect_Practice01 from "./c_useEffect/Practice01"
+import A_useCallback from "./d_callback_memo/A_useCallback";
+import B_useMemo from "./d_callback_memo/B_useMemo";
 
 //  Index 컴포넌트
 function Index() {
   // 섹션 개수 자동 반영
-  const sectionCount = 3;
+  const sectionCount = 4;
   const [sections, setSections] = useState<boolean[]>(Array(sectionCount).fill(false));
 
   // 최신 섹션만 열기
@@ -69,6 +71,15 @@ function Index() {
         <Effect01 /> <hr />
         <Effect02 /> <hr />
         <Effect_Practice01 /> <hr />
+      </CollapsibleSection>
+
+      <CollapsibleSection
+        title="4. 리액트 Hooks - useCallback & useMemo"
+        isOpen={sections[3]}
+        onToggle={() => toggleSection(3)}
+      >
+        <A_useCallback /> <hr />
+        <B_useMemo />
       </CollapsibleSection>
     </div>
   );
