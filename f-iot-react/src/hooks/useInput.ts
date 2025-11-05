@@ -22,7 +22,7 @@ export function useInput(initialValue: string) {
 
   const bind = {
     value,
-    onchange: hadleInputChange 
+    onChange: hadleInputChange 
   }
 
   return {value, handleReset, bind};
