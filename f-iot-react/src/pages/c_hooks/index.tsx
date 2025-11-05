@@ -21,6 +21,7 @@ import Custom01 from "./f_custom/Custom01";
 import Custom02 from "./f_custom/Custom02";
 import Custom03 from "./f_custom/Custom03";
 import TodoAppLocalStorage from "@/_practices/c_hooks/todoAppLocalStorage";
+import Webcam from "./Webcam";
 
 export default function Index() {
   const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -97,6 +98,10 @@ export default function Index() {
         </CollapsibleSection>
         <CollapsibleSection title="7. 리액트 Hooks - Todo">
           <TodoAppLocalStorage />
+        </CollapsibleSection>
+        <CollapsibleSection title="8. 리액트 Hooks - Webcam">
+          {/* <Webcam /> */}
+          <></>
         </CollapsibleSection>
       </IndexWrapper>
     </div>
