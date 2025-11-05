@@ -1,10 +1,12 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import A_DashBoardStats from './A_DashBoardStats'
-import A_DashBoardSettings from './A_DashBoardSettings'
-import A_DashBoard from './A_DashBoard'
+import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import A_DashBoardStats from "./A_DashBoardStats";
+import A_DashBoardSettings from "./A_DashBoardSettings";
+import A_DashBoard from "./A_DashBoard";
+import C_useNavigate from "./C_useNavigate";
+import D_useLocation from "./D_useLocation";
 
-//! React Router DOM 
+//! React Router DOM
 // : React 애플레케이션에서 라우팅을 담당하는 "라이브러리"
 // - "어떤 URL 경로(path)에 어떤 컴포넌트를 보여줄지" 정의하는 도구
 
@@ -40,36 +42,70 @@ import A_DashBoard from './A_DashBoard'
 //    path    : URL 경로 (문자열)
 //    element : 해당 경로에 매칭될 때 렌더링할 컴포넌트
 //    index   : 부모 라우트의 기본 경로 일 때 사용 (Nasted Route 시)
-//    children: 중첩 라우트(Nasted Routes) 정의 가능 
+//    children: 중첩 라우트(Nasted Routes) 정의 가능
 
-const h2Style ={
-  backgroundColor: 'black',
-  color: 'orange'
+const h2Style = {
+  backgroundColor: "black",
+  color: "orange",
+};
+
+const linkStyle = {
+  color: 'black',
+  textDecoration: 'none',
 }
+/*
+  Router 내부 컴포넌트들의 path 속성
+  
+  1) /로 시작하는 경우 
+    : 메인 Route 경로에서 시작
+    : http://localhost:5173
+
+  2) /로 시작하지 않는 경우
+    : 현재 컴포넌트의 경로를 기준으로 시작
+    : http:// localhost:5173/route/
+
+*/
 
 function Index() {
   return (
     <div>
       <h1
         style={{
-          backgroundColor: 'black',
-          color: 'white'
+          backgroundColor: "black",
+          color: "white",
         }}
-      >=== 리액트 라우트 돔 ===</h1>
-      <h2 style={h2Style}>1. 중첩(Nested) 라우트 예시</h2>
+      >
+        === 리액트 라우트 돔 ===
+      </h1>
+      <div
+        style={{
+          display: 'flex',
+          gap: '10px',
+          border: '1px solid #ccc',
+          margin: '5px',
+          padding: '10px 15px',
+          borderRadius: '8px'
+        }}
+      >
+        <Link style={linkStyle} to='/route/dashboard'>중첩 라우팅: (dashboard)</Link>
+        <Link style={linkStyle} to='/route/navigate'>useNavigate</Link>
+        <Link style={linkStyle} to='/route/location'>useLocation</Link>
+      </div>
       <Routes>
         {/* /dashboard */}
-        <Route path='dashboard' element={<A_DashBoard />}>
+        <Route path="dashboard" element={<A_DashBoard />}>
 
           {/* /dashboard/stats */}
-          <Route path='stats' element={<A_DashBoardStats />}/>
+          <Route path="stats" element={<A_DashBoardStats />} />
           {/* /dashboard/settings */}
-          <Route path='settings' element={<A_DashBoardSettings />}/>
+          <Route path="settings" element={<A_DashBoardSettings />} />
         </Route>
+
+        <Route path="navigate" element={<C_useNavigate />} />
+        <Route path="location" element={<D_useLocation />} />
       </Routes>
     </div>
-    
-  )
+  );
 }
 
-export default Index
+export default Index;
