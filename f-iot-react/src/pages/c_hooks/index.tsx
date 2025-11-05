@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
 import CollapsibleSection from "@/components/CollapsibleSection";
-import { useEffect, useState } from "react";
 import State01 from "./a_useState/State01";
-import State03 from "./a_useState/State03";
 import State02 from "./a_useState/State02";
+import State03 from "./a_useState/State03";
 import State04 from "./a_useState/State04";
 import State05 from "./a_useState/State05";
 import State06 from "./a_useState/State06";
@@ -12,77 +12,80 @@ import Ref_Practice01 from "./b_useRef/Practice01";
 import Ref_Practice02 from "./b_useRef/Practice02";
 import Effect01 from "./c_useEffect/Effect01";
 import Effect02 from "./c_useEffect/Effect02";
-import Effect_Practice01 from "./c_useEffect/Practice01"
+import Effect_Practice01 from "./c_useEffect/Practice01";
 import A_useCallback from "./d_callback_memo/A_useCallback";
 import B_useMemo from "./d_callback_memo/B_useMemo";
+import Reducer01 from "./e_useReducer/Reducer01";
+import Reducer02 from "./e_useReducer/Reducer02";
 
-//  Index 컴포넌트
-function Index() {
-  // 섹션 개수 자동 반영
-  const sectionCount = 4;
-  const [sections, setSections] = useState<boolean[]>(Array(sectionCount).fill(false));
+export default function Index() {
+  const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
+    const sectionCount = React.Children.count(children);
+    const [sections, setSections] = useState<boolean[]>(Array(sectionCount).fill(false));
 
-  // 최신 섹션만 열기
-  useEffect(() => {
-    setSections(Array(sectionCount).fill(false).map((_, i) => i === sectionCount - 1));
-  }, [sectionCount]);
+    // 마지막 섹션만 열기
+    useEffect(() => {
+      setSections(Array(sectionCount).fill(false).map((_, i) => i === sectionCount - 1));
+    }, [sectionCount]);
 
-  // 클릭 시 해당 섹션만 열기
-  const toggleSection = (index: number) => {
-    setSections(prev => prev.map((_, i) => i === index ? !prev[i] : false));
+    const toggleSection = (index: number) => {
+      setSections(prev => prev.map((_, i) => (i === index ? !prev[i] : false)));
+    };
+
+    // 각 children에 props 전달
+    return (
+      <>
+        {React.Children.map(children, (child, index) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child as React.ReactElement<any>, {
+                isOpen: sections[index],
+                onToggle: () => toggleSection(index),
+              })
+            : child
+        )}
+      </>
+    );
   };
-
 
   return (
     <div>
-      <h1 style={{ backgroundColor: 'black', color: 'white', padding: '8px' }}>
+      <h1 style={{ backgroundColor: "black", color: "white", padding: "8px" }}>
         === 리액트 Hooks ===
       </h1>
 
-      <CollapsibleSection
-        title="1. 리액트 Hooks - useState"
-        isOpen={sections[0]}
-        onToggle={() => toggleSection(0)}
-      >
-        <State01 /> <hr />
-        <State02 /> <hr />
-        <State03 /> <hr />
-        <State04 /> <hr />
-        <State05 /> <hr />
-        <State06 /> <hr />
-      </CollapsibleSection>
+      <IndexWrapper>
+        <CollapsibleSection title="1. 리액트 Hooks - useState">
+          <State01 /> <hr />
+          <State02 /> <hr />
+          <State03 /> <hr />
+          <State04 /> <hr />
+          <State05 /> <hr />
+          <State06 /> <hr />
+        </CollapsibleSection>
 
-      <CollapsibleSection
-        title="2. 리액트 Hooks - useRef"
-        isOpen={sections[1]}
-        onToggle={() => toggleSection(1)}
-      >
-        <Ref01 /> <hr />
-        <Ref02 /> <hr />
-        <Ref_Practice01 /> <hr />
-        <Ref_Practice02 /> <hr />
-      </CollapsibleSection>
+        <CollapsibleSection title="2. 리액트 Hooks - useRef">
+          <Ref01 /> <hr />
+          <Ref02 /> <hr />
+          <Ref_Practice01 /> <hr />
+          <Ref_Practice02 /> <hr />
+        </CollapsibleSection>
 
-      <CollapsibleSection
-        title="3. 리액트 Hooks - useEffect"
-        isOpen={sections[2]}
-        onToggle={() => toggleSection(2)}
-      >
-        <Effect01 /> <hr />
-        <Effect02 /> <hr />
-        <Effect_Practice01 /> <hr />
-      </CollapsibleSection>
+        <CollapsibleSection title="3. 리액트 Hooks - useEffect">
+          <Effect01 /> <hr />
+          <Effect02 /> <hr />
+          <Effect_Practice01 /> <hr />
+        </CollapsibleSection>
 
-      <CollapsibleSection
-        title="4. 리액트 Hooks - useCallback & useMemo"
-        isOpen={sections[3]}
-        onToggle={() => toggleSection(3)}
-      >
-        <A_useCallback /> <hr />
-        <B_useMemo />
-      </CollapsibleSection>
+        <CollapsibleSection title="4. 리액트 Hooks - useCallback & useMemo">
+          <A_useCallback /> <hr />
+          <B_useMemo />
+        </CollapsibleSection>
+
+        <CollapsibleSection title="5. 리액트 Hooks - useReducer">
+          <Reducer01 /> <hr />
+          <Reducer02 /> <hr />
+        </CollapsibleSection>
+      </IndexWrapper>
     </div>
   );
 }
-
-export default Index;

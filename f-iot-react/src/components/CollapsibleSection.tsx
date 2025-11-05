@@ -12,23 +12,24 @@ const h2Style: React.CSSProperties = {
   alignItems: "center",
   gap: "12px",
 };
+export interface CollapsibleSectionProps {
+  title: string;
+  children: React.ReactNode;
+  isOpen?: boolean; // optional로 바꾸면 더 편함
+  onToggle?: () => void;
+}
 
 function CollapsibleSection({
   title,
   children,
-  isOpen,
-  onToggle,
-}: {
-  title: string;
-  children: React.ReactNode;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
+  isOpen = false,
+  onToggle = () => {},
+}: CollapsibleSectionProps) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     const scrollY = window.scrollY;
-    onToggle();
+    onToggle() ;
     requestAnimationFrame(() => {
       window.scrollTo(0, scrollY);
     });
