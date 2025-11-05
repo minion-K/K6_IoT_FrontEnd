@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 //! useLocation
 // : 현재 페이지의 URL 정보를 객체로 반환
@@ -14,8 +15,17 @@ import React from 'react'
 */
 
 function D_useLocation() {
+  // location 객체를 반환
+  const location = useLocation();
+
   return (
-    <div>D_useLocation</div>
+    <div>
+      <h4>useLocation</h4>
+      <p>현재경로: {location.pathname}</p>
+      <p>쿼리: {location.search}</p>
+      <p>해시: {location.hash}</p>
+      <p>State 값: {location.state}</p>
+    </div>
   )
 }
 

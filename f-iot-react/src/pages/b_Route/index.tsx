@@ -5,6 +5,9 @@ import A_DashBoardSettings from "./A_DashBoardSettings";
 import A_DashBoard from "./A_DashBoard";
 import C_useNavigate from "./C_useNavigate";
 import D_useLocation from "./D_useLocation";
+import E_NaviExample from "./E_NaviExample";
+import E_LocationExample from "./E_LocationExample";
+import E_DetailPage from "./E_DetailPage";
 
 //! React Router DOM
 // : React 애플레케이션에서 라우팅을 담당하는 "라이브러리"
@@ -80,17 +83,20 @@ function Index() {
       <div
         style={{
           display: 'flex',
-          gap: '10px',
+          justifyContent: 'space-around',
           border: '1px solid #ccc',
           margin: '5px',
-          padding: '10px 15px',
+          padding: '15px',
           borderRadius: '8px'
         }}
       >
         <Link style={linkStyle} to='/route/dashboard'>중첩 라우팅: (dashboard)</Link>
         <Link style={linkStyle} to='/route/navigate'>useNavigate</Link>
         <Link style={linkStyle} to='/route/location'>useLocation</Link>
+        <Link style={linkStyle} to='/route/navi'>Example</Link>
       </div>
+
+      {/* routes */}
       <Routes>
         {/* /dashboard */}
         <Route path="dashboard" element={<A_DashBoard />}>
@@ -103,6 +109,11 @@ function Index() {
 
         <Route path="navigate" element={<C_useNavigate />} />
         <Route path="location" element={<D_useLocation />} />
+
+        {/* useNavigate & useLocation 예제 */}
+        <Route path="navi" element={<E_NaviExample />} />
+        <Route path="locate" element={<E_LocationExample />} />
+        <Route path="detail" element={<E_DetailPage />} />
       </Routes>
     </div>
   );
