@@ -1,45 +1,46 @@
 // : index 파일명은 해당 폴더에 메인 파일로 인식
 // - import 시 폴더명만으로 가져오기 가능
-import React from 'react'
-import B_Counter from './B_React_Counter'
-import C_Component, { Img, img } from './C_Component'
-import D_JSX from './D_JSX'
-import E_JSX from './E_JSX'
-import F_Review, { ExampleComponenet } from './F_Review'
-import G_Props from './G_Props'
-import H_Props from './H_Props'
-import I_Rendering from './I_Rendering'
-import J_handler from './J_handler'
-import Z_Example01 from './Z_Example01'
-import Z_Example02 from './Z_Example02'
-import Z_Example03 from './Z_Example03'
-import Z_Example04 from './Z_Example04'
+import React from "react";
+import B_Counter from "./B_React_Counter";
+import C_Component, { Img, img } from "./C_Component";
+import D_JSX from "./D_JSX";
+import E_JSX from "./E_JSX";
+import F_Review, { ExampleComponenet } from "./F_Review";
+import G_Props from "./G_Props";
+import H_Props from "./H_Props";
+import I_Rendering from "./I_Rendering";
+import J_handler from "./J_handler";
+import Z_Example01 from "../../_practices/a_basic/Z_Example01";
+import Z_Example02 from "../../_practices/a_basic/Z_Example02";
+import Z_Example03 from "../../_practices/a_basic/Z_Example03";
+import Z_Example04 from "../../_practices/a_basic/Z_Example04";
 
-const h2Style ={
-  backgroundColor: 'black',
-  color: 'orange'
-}
+const h2Style = {
+  backgroundColor: "black",
+  color: "orange",
+};
 
 // React는 반드시 컴포넌트명이 대문자
 function Index() {
-
   // 해당 함수형 컴포넌트의 리턴값: HTML코드 요소
   return (
     <div>
       <h1
         style={{
-          backgroundColor: 'black',
-          color: 'white'
+          backgroundColor: "black",
+          color: "white",
         }}
-      >=== 리액트 기본 문법 ===</h1>
+      >
+        === 리액트 기본 문법 ===
+      </h1>
       <h2 style={h2Style}>1. 리액트 VS 타입스크립트 (카운터 예제)</h2>
       {/* 컴포넌트는 주로 단일 태그로 사용 */}
-      <B_Counter/>
+      <B_Counter />
 
       <h2 style={h2Style}>2. Component: 리액트를 구성하는 기본 구조</h2>
-      <C_Component/>
+      <C_Component />
       {/* 컴포넌트: 재사용 가능한 UI 집합 */}
-      <div style={{ backgroundColor: 'pink '}}>
+      <div style={{ backgroundColor: "pink " }}>
         <Img />
         {img()}
       </div>
@@ -47,7 +48,7 @@ function Index() {
       <h2 style={h2Style}>3. JSX(TSX): 리액트의 기본 문법</h2>
       <D_JSX />
       <E_JSX />
-      
+
       <h2 style={h2Style}>4. Props: 리액트의 데이터 전달 (부모/자식)</h2>
       <G_Props />
       <H_Props />
@@ -56,7 +57,7 @@ function Index() {
       <I_Rendering />
 
       <h2 style={h2Style}>6. Handler: 리액트의 이벤트 핸들러</h2>
-      <J_handler/>
+      <J_handler />
 
       <h2 style={h2Style}>Z_Example01</h2>
       <Z_Example01 />
@@ -70,7 +71,7 @@ function Index() {
       <h2 style={h2Style}>Z_Example04</h2>
       <Z_Example04 />
     </div>
-  )
+  );
 }
 
-export default Index
+export default Index;

@@ -20,6 +20,7 @@ import Reducer02 from "./e_useReducer/Reducer02";
 import Custom01 from "./f_custom/Custom01";
 import Custom02 from "./f_custom/Custom02";
 import Custom03 from "./f_custom/Custom03";
+import TodoAppLocalStorage from "@/_practices/c_hooks/todoAppLocalStorage";
 
 export default function Index() {
   const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -93,6 +94,9 @@ export default function Index() {
           <Custom01 /> <hr />
           <Custom02 /> <hr />
           <Custom03 /> <hr />
+        </CollapsibleSection>
+        <CollapsibleSection title="7. 리액트 Hooks - Todo">
+          <TodoAppLocalStorage />
         </CollapsibleSection>
       </IndexWrapper>
     </div>
