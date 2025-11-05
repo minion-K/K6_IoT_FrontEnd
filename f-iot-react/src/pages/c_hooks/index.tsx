@@ -17,6 +17,8 @@ import A_useCallback from "./d_callback_memo/A_useCallback";
 import B_useMemo from "./d_callback_memo/B_useMemo";
 import Reducer01 from "./e_useReducer/Reducer01";
 import Reducer02 from "./e_useReducer/Reducer02";
+import Custom01 from "./f_custom/Custom01";
+import Custom02 from "./f_custom/Custom02";
 
 export default function Index() {
   const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -84,6 +86,11 @@ export default function Index() {
         <CollapsibleSection title="5. 리액트 Hooks - useReducer">
           <Reducer01 /> <hr />
           <Reducer02 /> <hr />
+        </CollapsibleSection>
+
+        <CollapsibleSection title="6. 리액트 Hooks - custom Hooks">
+          <Custom01 />
+          <Custom02 />
         </CollapsibleSection>
       </IndexWrapper>
     </div>
