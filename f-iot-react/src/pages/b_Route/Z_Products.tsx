@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
+import './Z_Products.css'
 
 //! === 상품 관련 Route 실습 예제 ===
 
@@ -12,8 +13,8 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 //? 상품 데이터 (mock 데이터)
 const PRODUCTS = [
-  { id: 1, name: "Laptop", category: "electornics" },
-  { id: 2, name: "Headphones", category: "electornics" },
+  { id: 1, name: "Laptop", category: "electronics" },
+  { id: 2, name: "Headphones", category: "electronics" },
   { id: 3, name: "Shirt", category: "fashion" },
   { id: 4, name: "Pants", category: "fashion" },
   { id: 5, name: "Shoes", category: "fashion" },
@@ -49,11 +50,11 @@ function Z_Products() {
   ? PRODUCTS.filter(product => product.category === category) 
   : PRODUCTS;
   return (
-    <div style={{padding: '20px'}}>
+    <div className="product-container">
       <h2>== Product List ==</h2>
 
-      <div>
-        <button onClick={() => setSearchParams({ category: "eletronics" })}>
+      <div className="filter-buttons">
+        <button onClick={() => setSearchParams({ category: "electronics" })}>
           전자제품
         </button>
         <button onClick={() => setSearchParams({ category: "fashion" })}>
@@ -62,7 +63,7 @@ function Z_Products() {
         <button onClick={() => setSearchParams({})}>전체보기</button>
       </div>
 
-      <ul>
+      <ul className="product-list">
         {filtered.map(product => (
           <li key={product.id}>
             {/* state를 사용하여 location 상태 전달 */}
