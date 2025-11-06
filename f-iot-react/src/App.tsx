@@ -12,6 +12,7 @@ import Z_ProductDetail from "./pages/b_Route/Z_ProductDetail";
 import Z_ProductInfo from "./pages/b_Route/Z_ProductInfo";
 import Z_Dashboard from "./pages/b_Route/Z_Dashboard";
 import Z_ProductReviews from "./pages/b_Route/Z_ProductReviews";
+import HTTP from "./pages/d_http";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
 
         <Route path="/practice/post" element={<PostList />} />
         <Route path="/hooks" element={<Hooks />} />
+        <Route path="/http" element={<HTTP />} />
+
         <Route path="/practice/post/:id" element={<PostDetail />} />
         <Route path="/practice/search" element={<SearchApp />} />
 
@@ -42,6 +45,7 @@ function App() {
           <Route path='reviews' element={<Z_ProductReviews />}/>
         </Route>
         <Route path='/dashboard' element={<Z_Dashboard />}/>
+        
       </Routes>
     </>
   );
