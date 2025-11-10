@@ -39,15 +39,14 @@ function App() {
         <Route path="/practice/search" element={<SearchApp />} />
 
         {/* //% pages/b_route - Z_실습코드 */}
-        <Route path="/" element={<Navigate to='/products'/>}/>
-        <Route path="/products" element={<Z_Products />}/>
+        <Route path="/" element={<Navigate to="/products" />} />
+        <Route path="/products" element={<Z_Products />} />
         <Route path="/products/:id" element={<Z_ProductDetail />}>
           {/* 중첩 라우트 */}
-          <Route path='info' element={<Z_ProductInfo />}/>
-          <Route path='reviews' element={<Z_ProductReviews />}/>
+          <Route path="info" element={<Z_ProductInfo />} />
+          <Route path="reviews" element={<Z_ProductReviews />} />
         </Route>
-        <Route path='/dashboard' element={<Z_Dashboard />}/>
-        
+        <Route path="/dashboard" element={<Z_Dashboard />} />
       </Routes>
     </>
   );

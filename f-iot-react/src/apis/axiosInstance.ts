@@ -11,7 +11,7 @@ export const publicApi = axios.create({
   baseURL: API_BASE,
   timeout: 10000,
   headers: {
-    "Content-Type": "application.json",
+    "Content-Type": "application/json",
     Accept: "application/json"
   },
 });
@@ -21,7 +21,7 @@ export const privateApi = axios.create({
   baseURL: API_BASE,
   timeout: 10000,
   headers: {
-    "Content-Type": "application.json",
+    "Content-Type": "application/json",
     Accept: "application/json"
   },
   // 세션이나 쿠키 인증용: 쿠키나 인증 헤더 정보를 포함시켜서 요청을 보냄
