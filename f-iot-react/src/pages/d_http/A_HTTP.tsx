@@ -8,7 +8,7 @@ import React from 'react'
 //! HTTP 요청(Request)
 // : 클라이언트가 서버에게 보내는 정보
 //% - URL: 요청할 자원의 주소('어디에 보낼지')
-//    EX) https://api.example.com/api/v1/uses - REST API
+//    EX) https://api.example.com/api/v1/users - REST API
 //% - Method: 어떤 동작을 할지 표현("어떻게 보낼지")
 //    EX) GET, POST, PUT, DELETE 등
 //% - Headers: 부가 정보(형식, 인증 등)
