@@ -13,6 +13,7 @@ import Z_ProductInfo from "./pages/b_Route/Z_ProductInfo";
 import Z_Dashboard from "./pages/b_Route/Z_Dashboard";
 import Z_ProductReviews from "./pages/b_Route/Z_ProductReviews";
 import HTTP from "./pages/d_http";
+import GlobalState from "@/pages/e_global_state";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/practice/post" element={<PostList />} />
         <Route path="/hooks" element={<Hooks />} />
         <Route path="/http" element={<HTTP />} />
+        <Route path="/global-state" element={<GlobalState />} />
 
         <Route path="/practice/post/:id" element={<PostDetail />} />
         <Route path="/practice/search" element={<SearchApp />} />
