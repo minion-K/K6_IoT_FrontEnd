@@ -20,7 +20,7 @@ import { useCountStore } from "./B_Zustand";
 
 //? 종류
 //& 1. Context API (React 기본, 내장 API)
-// - 장점) 내장, 간단하 공유용도 적합(테마, auth)
+// - 장점) 내장, 간단한 공유용도 적합(테마, auth)
 // - 단점) 빈번한 변경 시 리렌더 문제
 
 //& 2. zustand

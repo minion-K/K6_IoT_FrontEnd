@@ -53,7 +53,7 @@ export const getArticleById = async (id: number) => {
 //% == 인증 객체 필요 O ==
 //! 게시글 생성
 // export const createArticle = async (data: ArticleCreateRequest) => {
-//   // 토큰 가져오기 문법
+//   토큰 가져오기 문법
 //   const token = "";
 //   const res = await privateApi.post("/articles", data, {
 //     "headers" : {
