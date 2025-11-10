@@ -1,6 +1,7 @@
 import CollapsibleSection from '@/components/CollapsibleSection'
 import React, { useEffect, useState } from 'react'
 import B_Axios from './B_Axios'
+import C_ArticlePage from './C_ArticlePage';
 
 const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
     const sectionCount = React.Children.count(children);
@@ -39,6 +40,9 @@ function Index() {
       <IndexWrapper>
         <CollapsibleSection title="1. Axios">
           <B_Axios />
+        </CollapsibleSection>
+        <CollapsibleSection title="2. Article(REST API + React)">
+          <C_ArticlePage />
         </CollapsibleSection>
       </IndexWrapper>
     </div>
