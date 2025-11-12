@@ -4,7 +4,8 @@ import CollapsibleSection from "@/components/CollapsibleSection";
 import B_Zustand from "./B_Zustand";
 import SignIn from "./SignIn";
 import GlobalData from "./GlobalData";
-import TruckReservationList from "./TruckReservationList";
+import TruckReservationList from "../../components/TruckReservationList";
+import TruckDetailPage from "./truckDetailPage";
 
 const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
   const sectionCount = React.Children.count(children);
@@ -63,7 +64,7 @@ function Index() {
           <GlobalData />
         </CollapsibleSection>
         <CollapsibleSection title="5. Zustand Practice(Reservation)">
-          <TruckReservationList />
+          <TruckDetailPage />
         </CollapsibleSection>
       </IndexWrapper>
     </div>
