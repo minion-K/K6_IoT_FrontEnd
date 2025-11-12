@@ -48,8 +48,21 @@ function TruckReservationList() {
               key={reservation.id}
               className={`reservation-item ${selectedTimeSlot === reservation.timeSlot ? "selected" : ""}`}
               onClick={() => setSelectedTimeSlot(reservation.timeSlot)}
+              role='button'
+              // 키보드 포커스가 가능하도록 설정: 0이면 문서 탭 순서에 따라 포커싱
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if(e.key === 'Enter' || e.key === '') {
+                  setSelectedTimeSlot(reservation.timeSlot)
+                }
+              }}
             >
-
+              <div className="reservation-user">예약자: {reservation.userId}</div>
+              <div className="reservation-date muted" style={{marginTop: 6}}>예약 날짜: {reservation.date}</div>
+              <div className="reservation-row">
+                <div className="reservation-timeslot">{reservation.timeSlot}</div>
+                <div className="reservation-status">{reservation.status}</div>
+              </div>
             </li>
           ))}
         </ul>

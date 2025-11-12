@@ -13,7 +13,7 @@ export interface ReservationDto {
 
 export const getAllReservations = async (truckId: number): Promise<ReservationDto[]> => {
   try {
-    const res = await publicApi.get(`/trucks/${truckId}/reservation`);
+    const res = await publicApi.get(`/trucks/${truckId}/reservations`);
   
     return res.data.data as ReservationDto[];
   } catch(e) {
