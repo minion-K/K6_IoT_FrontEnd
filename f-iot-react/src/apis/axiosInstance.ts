@@ -16,6 +16,7 @@ export const publicApi = axios.create({
     "Content-Type": "application/json",
     Accept: "application/json"
   },
+  withCredentials: true,
 });
 
 //? 2. 인증 인스턴스 (토큰이 필요한 API)
@@ -59,13 +60,13 @@ privateApi.interceptors.response.use(
         const {setAccessToken} = useAuthStore.getState();
         setAccessToken(newToken);
         // 실패했던 요청의 authorization 헤더를 새 토큰으로 교체
-        originalRequest.headers["Authorized"] = `Bearer ${newToken}`;
+        originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
         
         // 같은 요청을 다시 시도(토큰 갱신 후 재전송)
         return privateApi(originalRequest);
 
       } catch(e) {
-        // 토큰 재밟급 실패 시 -> 강제 로그아웃 처리
+        // 토큰 재발급 실패 시 -> 강제 로그아웃 처리
         useAuthStore.getState().logout();
       }
     }

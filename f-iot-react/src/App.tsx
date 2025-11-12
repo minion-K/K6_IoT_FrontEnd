@@ -14,11 +14,50 @@ import Z_Dashboard from "./pages/b_Route/Z_Dashboard";
 import Z_ProductReviews from "./pages/b_Route/Z_ProductReviews";
 import HTTP from "./pages/d_http";
 import GlobalState from "@/pages/e_global_state";
+import { useUIStore } from "./stores/ui.store";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Toast from "./components/Toast";
+import { useAuthStore } from "./stores/auth.store";
+import { useEffect } from "react";
+import { useGlobalStore } from "./stores/global.store";
 
 function App() {
+  const {isLoaded, fetchGlobalData} = useGlobalStore();
+
+  useEffect(() => {
+    if(!isLoaded) {
+      // 전역 상태 관리에 Global 데이터가 없는 경우
+      fetchGlobalData();
+    }
+  }, [isLoaded, fetchGlobalData]); // 맨 처음 실행 + 의존성 배열값 변경마다 실행
+
+  //% zustand의 store는 호출 시 내부의 스토어를 객체 형식으로 반환
+  // const {전역상태내부의 속성|함수명} = useUIStore();
+  // > 내부의 모든 속성과 메서드 호출 후 좌항에 일치하는 값만을 남김
+
+  // > 필요한 속성 메서드만 뽑아서 반환
+  const darkMode = useUIStore((state) => state.darkMode); // true: 다크 모드 / false: 라이트
+
+  const appStyle = {
+    minHeight: "100vh",
+    backgroundColor: darkMode ? "#111" : "#fff",
+    color: darkMode ? "#bbb" : "#111",
+    transition: "all 0.3s ease",
+  };
+
+  const {accessToken, tryRefreshToken} = useAuthStore();
+
+  useEffect(() => {
+    if(!accessToken) {
+      tryRefreshToken();      
+    }
+  }, [])
+
   return (
-    <>
-      <h1>Korea IoT React</h1>
+    <div style={appStyle}>
+      <Header />
+      <Sidebar />
       <Navibar />
       {/* Routes 태그: Route를 감싸는 컴포넌트 */}
       <Routes>
@@ -48,7 +87,8 @@ function App() {
         </Route>
         <Route path="/dashboard" element={<Z_Dashboard />} />
       </Routes>
-    </>
+      <Toast />
+    </div>
   );
 }
 

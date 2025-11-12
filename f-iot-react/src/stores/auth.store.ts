@@ -80,7 +80,7 @@ export const useAuthStore = create<AuthState>(
         await signOut();
       } finally {
           set({
-            user: null,
+            user: null, 
             accessToken: null
           });
         }
