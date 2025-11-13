@@ -2,6 +2,7 @@ import CollapsibleSection from '@/components/CollapsibleSection'
 import React, { useEffect, useState } from 'react'
 import A_CSS from './A_CSS';
 import B_Module from './B_Module';
+import C_StyleComponents from './C_StyleComponents';
 
 const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
   const sectionCount = React.Children.count(children);
@@ -45,6 +46,9 @@ function Index() {
       </CollapsibleSection>
       <CollapsibleSection title="2. Module CSS">
         <B_Module />
+      </CollapsibleSection>
+      <CollapsibleSection title="3. Styled Components">
+        <C_StyleComponents />
       </CollapsibleSection>
 
     </IndexWrapper>
