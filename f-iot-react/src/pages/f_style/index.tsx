@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import A_CSS from './A_CSS';
 import B_Module from './B_Module';
 import C_StyleComponents from './C_StyleComponents';
+import D_Emotion from './D_Emotion';
+import D_EmotionPractice from './emotion-practice/EmotionPractice';
 
 const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
   const sectionCount = React.Children.count(children);
@@ -49,6 +51,12 @@ function Index() {
       </CollapsibleSection>
       <CollapsibleSection title="3. Styled Components">
         <C_StyleComponents />
+      </CollapsibleSection>
+      <CollapsibleSection title="4. Emotion">
+        <D_Emotion />
+      </CollapsibleSection>
+      <CollapsibleSection title="5. Emotion + 반응형">
+        <D_EmotionPractice />
       </CollapsibleSection>
 
     </IndexWrapper>
