@@ -24,6 +24,12 @@ const CardContainer = styled.div`
   padding: clamp(1rem, 2vw, 2rem);
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.7;
+  }
 
   h3 {
     font-size: clamp(1rem, 2vw, 1.5rem);
