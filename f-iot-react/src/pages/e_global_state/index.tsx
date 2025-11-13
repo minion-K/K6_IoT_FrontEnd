@@ -5,7 +5,8 @@ import B_Zustand from "./B_Zustand";
 import SignIn from "./SignIn";
 import GlobalData from "./GlobalData";
 import TruckReservationList from "../../components/TruckReservationList";
-import TruckDetailPage from "./truckDetailPage";
+import TruckDetailPage from "./TruckDetailPage";
+
 
 const IndexWrapper = ({ children }: { children: React.ReactNode }) => {
   const sectionCount = React.Children.count(children);

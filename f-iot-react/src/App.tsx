@@ -21,6 +21,7 @@ import Toast from "./components/Toast";
 import { useAuthStore } from "./stores/auth.store";
 import { useEffect } from "react";
 import { useGlobalStore } from "./stores/global.store";
+import  Style  from "@/pages/f_style";
 
 function App() {
   const {isLoaded, fetchGlobalData} = useGlobalStore();
@@ -73,6 +74,7 @@ function App() {
         <Route path="/hooks" element={<Hooks />} />
         <Route path="/http" element={<HTTP />} />
         <Route path="/global-state" element={<GlobalState />} />
+        <Route path='/style' element={<Style />} />
 
         <Route path="/practice/post/:id" element={<PostDetail />} />
         <Route path="/practice/search" element={<SearchApp />} />
