@@ -7,6 +7,7 @@ import Navibar from "./components/Navibar";
 import PostList from "./_practices/a_basic/PostList";
 import PostDetail from "./components/PostDetail";
 import SearchApp from "./_practices/c_hooks/SearchApp";
+import Dashboard from "./_practices/d_emotion/Dashboard";
 import Z_Products from "./pages/b_Route/Z_Products";
 import Z_ProductDetail from "./pages/b_Route/Z_ProductDetail";
 import Z_ProductInfo from "./pages/b_Route/Z_ProductInfo";
@@ -14,14 +15,16 @@ import Z_Dashboard from "./pages/b_Route/Z_Dashboard";
 import Z_ProductReviews from "./pages/b_Route/Z_ProductReviews";
 import HTTP from "./pages/d_http";
 import GlobalState from "@/pages/e_global_state";
-import { useUIStore } from "./stores/ui.store";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Toast from "./components/Toast";
 import { useAuthStore } from "./stores/auth.store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalStore } from "./stores/global.store";
 import  Style  from "@/pages/f_style";
+import { darkTheme, lightTheme } from "./_practices/d_emotion/theme";
+import { ThemeProvider } from "@emotion/react";
+import { GlobalStyles } from "./_practices/d_emotion/Global";
 
 function App() {
   const {isLoaded, fetchGlobalData} = useGlobalStore();
@@ -38,14 +41,14 @@ function App() {
   // > 내부의 모든 속성과 메서드 호출 후 좌항에 일치하는 값만을 남김
 
   // > 필요한 속성 메서드만 뽑아서 반환
-  const darkMode = useUIStore((state) => state.darkMode); // true: 다크 모드 / false: 라이트
+  // const darkMode = useUIStore((state) => state.darkMode); // true: 다크 모드 / false: 라이트
 
-  const appStyle = {
-    minHeight: "100vh",
-    backgroundColor: darkMode ? "#111" : "#fff",
-    color: darkMode ? "#bbb" : "#111",
-    transition: "all 0.3s ease",
-  };
+  //% const appStyle = {
+  //   minHeight: "100vh",
+  //   backgroundColor: darkMode ? "#111" : "#fff",
+  //   color: darkMode ? "#bbb" : "#111",
+  //   transition: "all 0.3s ease",
+  // };
 
   const {accessToken, tryRefreshToken} = useAuthStore();
 
@@ -55,8 +58,16 @@ function App() {
     }
   }, [])
 
+  const [isDark, setIsDark] = useState<boolean>(false);
+  const toggleTheme = () => setIsDark(prev => !prev);
+
+  const theme = isDark ? darkTheme : lightTheme
+
   return (
-    <div style={appStyle}>
+    // <div style={appStyle}>
+    //? ThemeProvider: 전역 테마를 Emotion 스타일에서 바로 사용 가능
+    <ThemeProvider theme={theme}>
+      <GlobalStyles theme={theme} />
       <Header />
       <Sidebar />
       <Navibar />
@@ -78,11 +89,14 @@ function App() {
 
         <Route path="/practice/post/:id" element={<PostDetail />} />
         <Route path="/practice/search" element={<SearchApp />} />
+        <Route path="/p/dashboard" element={<Dashboard toggleTheme={toggleTheme}/>} />
 
         {/* //% pages/b_route - Z_실습코드 */}
         <Route path="/" element={<Navigate to="/products" />} />
         <Route path="/products" element={<Z_Products />} />
         <Route path="/products/:id" element={<Z_ProductDetail />}>
+        
+
           {/* 중첩 라우트 */}
           <Route path="info" element={<Z_ProductInfo />} />
           <Route path="reviews" element={<Z_ProductReviews />} />
@@ -90,7 +104,7 @@ function App() {
         <Route path="/dashboard" element={<Z_Dashboard />} />
       </Routes>
       <Toast />
-    </div>
+    </ThemeProvider>
   );
 }
 

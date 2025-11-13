@@ -16,7 +16,8 @@ function Sidebar() {
     padding: '10px',
     boxSizing: 'border-box',
     transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
-    transition: 'transform 0.3s ease'
+    transition: 'transform 0.3s ease',
+    zIndex: 999
   }
 
   return (
