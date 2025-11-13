@@ -1,5 +1,6 @@
 import { useReservationStore } from '@/stores/reservation.store'
 import React, { useEffect } from 'react'
+import '@/pages/e_global_state/truck-pages.css';
 
 //! 가게(트럭)의 전체 예약 정보 - 리스트 목록
 // 예약에서 항목 클릭시 setSelectedTimeSlot 호출 -> 상세 컴포넌트와 공유
@@ -22,7 +23,7 @@ function TruckReservationList() {
     }
 
     void fetchReservations(selectedTruckId);
-  }, []);
+  }, [selectedTruckId]);
 
   if(!selectedTruckId) {
     return (
@@ -46,14 +47,14 @@ function TruckReservationList() {
           {reservationList.map(reservation => (
             <li 
               key={reservation.id}
-              className={`reservation-item ${selectedTimeSlot === reservation.timeSlot ? "selected" : ""}`}
-              onClick={() => setSelectedTimeSlot(reservation.timeSlot)}
+              className={`reservation-item ${selectedTimeSlot === `${reservation.id}|${reservation.timeSlot}` ? "selected" : ""}`}
+              onClick={() => setSelectedTimeSlot(`${reservation.id}|${reservation.timeSlot}`)}
               role='button'
               // 키보드 포커스가 가능하도록 설정: 0이면 문서 탭 순서에 따라 포커싱
               tabIndex={0}
               onKeyDown={(e) => {
-                if(e.key === 'Enter' || e.key === '') {
-                  setSelectedTimeSlot(reservation.timeSlot)
+                if(e.key === 'Enter' || e.key === ' ') {
+                  setSelectedTimeSlot(`${reservation.id}|${reservation.timeSlot}`)
                 }
               }}
             >
