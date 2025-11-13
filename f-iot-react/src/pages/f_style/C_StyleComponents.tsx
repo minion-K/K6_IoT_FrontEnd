@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled  from 'styled-components'
 
 //! styled-components (CSS-in-JS)
 // : CSS를 자바스크립트 코드 안에서 작성하는 방식
@@ -28,37 +28,130 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-  background: var(--color-primary);
+  background: ${({theme}) => theme.colors.primary};
   color: white;
   border-radius: var(--radius-md);
   padding: var(--space-md);
   font-size: var(--font-base);
 `;
 
-//? styled-components theme 설정 (디자인 시스템 중심)
-export const theme = {
-  colors: {
-    primary: '#2563eb',
-    primaryHover: '#1e40af',
-    secondary: '#6b7280'
-  },
-  space: {
-    xs: '4px',
-    md: '8px',
-    lg: '16px'
-  },
-  radius: {
-    sm: '4px',
-    md: '8px',
-    lg: '16px'
+// ctrl + shift + p
+// typeScript: restart ts server
+
+const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(160deg, #f6d365 0%, #fda085 100%);
+  /* 
+    & clamp: CSS 함수 
+    : 값을 최소값, 최대값 사이로 제한(clamp)
+    - 가운데 인자 - 권장값을 계산하여 그 값이 최소보다 작으면 최소값을
+                  , 최대보다 크면 최대값
+                  , 그렇지 않으면 해당 권장값을 사용
+
+    % vw 단위: viewport width의 약자 (viewport 너비 대비 퍼센트 수치)
+  */
+  padding: clamp(1rem, 5vw, 3rem);
+`;
+
+const LoginCard = styled.div`
+  display: grid;
+  gap: 1.5rem;
+  background-color: #fff;
+  padding: clamp(2rem, 5vw, 4rem);
+  width: min-content(100%, 420px);
+  border: 1px solid #ddd;
+  border-radius: var(--radius-sm);
+  place-items: center;
+`;
+
+const Title = styled.h1`
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-bold);
+  color: #333;
+`;
+
+const SubTitle = styled.p`
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #666;
+  text-align: center;
+`;
+
+const Form = styled.form`
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+`;
+
+const Input = styled.input`
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.8rem;
+  font-size: 16px;
+  width: 100%;
+  transition: border 0.2s;
+
+  &:focus{
+    border-color: #fda085;
+    outline: none;
   }
+`;
+
+
+
+const LoginButton = styled.button`
+  padding: 0.9rem;
+  background-color: #fda085;
+  color: white;
+  border-radius: 0.85rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f6b365;
+  }
+`;
+
+const FooterText = styled.footer`
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+
+export function LoginPage() {
+  return (
+    <LoginContainer>
+      <LoginCard>
+        <Title>로그인</Title>
+        <SubTitle>로그인하여 웹 페이지를 활용해보세요.</SubTitle>
+        <Form>
+          <Input type='email' placeholder='이메일'/>
+          <Input type='password' placeholder='비밀번호'/>
+          <LoginButton>로그인</LoginButton>
+        </Form>
+        <FooterText>게정이 없으신가요? 회원가입</FooterText>
+      </LoginCard>
+    </LoginContainer>
+  )
 }
+
 
 function C_StyleComponents() {
   return (
-    <Container>
-      <Button>styled-components를 사용한 버튼</Button>
-    </Container>
+    <>
+      <Container>
+        <Button>styled-components를 사용한 버튼</Button>
+      </Container>
+      <hr />
+      <LoginPage />
+    </>
   )
 }
 

@@ -5,8 +5,10 @@ import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import '@/styles/reset.css'
 import '@/styles/variables.css'
-import { theme } from './pages/f_style/C_StyleComponents.tsx'
 import { ThemeProvider } from 'styled-components'
+import { theme } from './pages/f_style/styled.d'
+
+
 // import '@/styles/global.css';
 
 createRoot(document.getElementById('root')!).render(
