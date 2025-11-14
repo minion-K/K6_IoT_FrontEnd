@@ -4,6 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 import { CardContainer, CardTitle } from "./Card";
 import SalesChartChartJS from "./charts/SalesChartChartJS";
 import SalesChartRecharts from "./charts/SalesChartRecharts";
+import Clamp from "../pages/B_Clamp";
 
 function Dashboard({ toggleTheme }: { toggleTheme: () => void }) {
   // 예시 데이터 (mock data)
@@ -43,10 +44,16 @@ function Dashboard({ toggleTheme }: { toggleTheme: () => void }) {
           <CardTitle>매출(Chart.js)</CardTitle>
           <SalesChartChartJS />
         </CardContainer>
+
         {/* 차트 섹션: Recharts 버전 */}
         <CardContainer>
           <CardTitle>매출(Recharts.js)</CardTitle>
           <SalesChartRecharts />
+        </CardContainer>
+
+        {/* clamp 함수 */}
+        <CardContainer>
+          <Clamp />
         </CardContainer>
       </Grid>
     </Page>
